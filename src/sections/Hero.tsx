@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import heroHotel from "@/assets/hero-hotel.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
@@ -7,6 +7,13 @@ import clinqLounge from "@/assets/clinq-lounge.jpg";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
 
 const previews = [roomSuite, diningCloud9, clinqLounge];
+
+/** 3 hotel scenes that cycle inside the hero card like the reference video. */
+const cardSlides = [
+  { src: heroHotel, alt: "Illuminated facade of Hotel PNS Nakshatra at night" },
+  { src: roomSuite, alt: "Nakshatra Suite living lounge" },
+  { src: diningCloud9, alt: "Cloud 9 rooftop dining above Vellore" },
+];
 
 
 export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) {
