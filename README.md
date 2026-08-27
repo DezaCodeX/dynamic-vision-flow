@@ -4,7 +4,7 @@ i need to build a website based on the given  details attached using the react i
 
 This project was built with [Lovable](https://lovable.dev).
 
-## Build with Lovable
+##
 
 Continue developing this project in the [Lovable editor](https://lovable.dev/projects/9df929d2-a46a-4f68-bfdb-f7f5fe9f088c).
 
