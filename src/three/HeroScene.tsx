@@ -22,13 +22,16 @@ function DustField({ count = 1400 }: { count?: number }) {
     if (!pts) return;
     const dt = Math.min(delta, 0.05);
     pts.rotation.y += dt * 0.028;
-    const arr = pts.geometry.attributes.position.array as Float32Array;
+    const attr = pts.geometry.attributes["position"] as THREE.BufferAttribute | undefined;
+    if (!attr) return;
+    const arr = attr.array as Float32Array;
     const t = state.clock.elapsedTime;
     for (let i = 0; i < count; i++) {
-      arr[i * 3 + 1] += Math.sin(t * 0.25 + i) * 0.0012 + dt * 0.06;
-      if (arr[i * 3 + 1] > 7) arr[i * 3 + 1] = -7;
+      const idx = i * 3 + 1;
+      arr[idx] = (arr[idx] ?? 0) + Math.sin(t * 0.25 + i) * 0.0012 + dt * 0.06;
+      if ((arr[idx] ?? 0) > 7) arr[idx] = -7;
     }
-    pts.geometry.attributes.position.needsUpdate = true;
+    attr.needsUpdate = true;
   });
 
   return (

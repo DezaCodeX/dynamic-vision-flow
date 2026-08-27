@@ -18,7 +18,7 @@ export function Cursor() {
       y = e.clientY;
       setVisible(true);
       const target = (e.target as HTMLElement)?.closest?.("[data-cursor]") as HTMLElement | null;
-      setLabel(target?.dataset.cursor ?? null);
+      setLabel(target?.dataset["cursor"] ?? null);
     };
 
     const loop = () => {
