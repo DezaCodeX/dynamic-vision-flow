@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import Lenis from "lenis";
 
-import { Loader } from "@/components/Loader";
 import { Cursor } from "@/components/Cursor";
 import { Navbar } from "@/components/Navbar";
 import { BookingPanel } from "@/components/BookingPanel";
@@ -38,11 +37,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [loaded, setLoaded] = useState(false);
   const [booking, setBooking] = useState(false);
   const openBooking = useCallback(() => setBooking(true), []);
 
-  useReveal(loaded);
+  useReveal(true);
 
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
@@ -60,12 +58,11 @@ function Home() {
 
   return (
     <>
-      {!loaded ? <Loader onDone={() => setLoaded(true)} /> : null}
       <Cursor />
       <Navbar onBook={openBooking} />
 
       <main className="relative">
-        <Hero ready={loaded} onBook={openBooking} />
+        <Hero ready={true} onBook={openBooking} />
         <Rooms />
         <Dining />
         <Events />
