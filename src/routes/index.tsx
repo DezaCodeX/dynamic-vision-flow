@@ -14,7 +14,6 @@ import { Footer } from "@/sections/Footer";
 import { useReveal } from "@/hooks/useReveal";
 
 export const Route = createFileRoute("/")({
-  ssr: false,
   head: () => ({
     meta: [
       { title: "Hotel PNS Nakshatra — Luxury Hotel in Vellore" },
