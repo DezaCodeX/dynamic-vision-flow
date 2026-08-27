@@ -3,10 +3,7 @@ import gsap from "gsap";
 import heroHotel from "@/assets/hero-hotel.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
 import diningCloud9 from "@/assets/dining-cloud9.jpg";
-import clinqLounge from "@/assets/clinq-lounge.jpg";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
-
-const previews = [roomSuite, diningCloud9, clinqLounge];
 
 /** 3 hotel scenes that cycle inside the hero card like the reference video. */
 const cardSlides = [
