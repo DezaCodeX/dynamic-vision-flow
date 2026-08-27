@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import Lenis from "lenis";
 
@@ -13,29 +12,7 @@ import { Location } from "@/sections/Location";
 import { Footer } from "@/sections/Footer";
 import { useReveal } from "@/hooks/useReveal";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Hotel PNS Nakshatra — Luxury Hotel in Vellore" },
-      {
-        name: "description",
-        content:
-          "Premium rooms, Cloud 9 rooftop dining, Clinq lounge and banquet halls at Hotel PNS Nakshatra, Vellore. Book your stay.",
-      },
-      { property: "og:title", content: "Hotel PNS Nakshatra — Luxury Hotel in Vellore" },
-      {
-        property: "og:description",
-        content:
-          "A cinematic stay in Vellore: designed rooms, rooftop dining, lounge bar and four celebration halls.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Home,
-});
-
-function Home() {
+export function Home() {
   const [booking, setBooking] = useState(false);
   const openBooking = useCallback(() => setBooking(true), []);
 
