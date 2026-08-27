@@ -67,21 +67,28 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
       <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
         <div>
           <div className="flex gap-3">
-            {previews.map((src, i) => (
-              <div
-                key={i}
+            {cardSlides.map((slide, i) => (
+              <button
+                key={slide.src}
+                type="button"
+                onClick={() => setCardIndex(i)}
                 data-hero-preview
-                className="h-16 w-20 overflow-hidden rounded-sm border border-border sm:h-20 sm:w-28"
+                aria-label={`Show ${slide.alt}`}
+                className={`h-16 w-20 overflow-hidden rounded-sm border transition-all duration-500 sm:h-20 sm:w-28 ${
+                  i === cardIndex
+                    ? "border-gold opacity-100"
+                    : "border-border opacity-60 hover:opacity-90"
+                }`}
               >
                 <img
-                  src={src}
-                  alt="Hotel PNS Nakshatra interiors in Vellore"
+                  src={slide.src}
+                  alt={slide.alt}
                   loading="lazy"
                   width={1200}
                   height={800}
-                  className="size-full object-cover opacity-80"
+                  className="size-full object-cover"
                 />
-              </div>
+              </button>
             ))}
           </div>
 
