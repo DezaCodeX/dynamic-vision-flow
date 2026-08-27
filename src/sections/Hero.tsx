@@ -1,13 +1,13 @@
-import { Suspense, lazy, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import heroHotel from "@/assets/hero-hotel.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
 import diningCloud9 from "@/assets/dining-cloud9.jpg";
 import clinqLounge from "@/assets/clinq-lounge.jpg";
-
-const HeroScene = lazy(() => import("@/three/HeroScene"));
+import { HeroBackdrop } from "@/components/HeroBackdrop";
 
 const previews = [roomSuite, diningCloud9, clinqLounge];
+
 
 export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) {
   const root = useRef<HTMLElement>(null);
@@ -44,9 +44,9 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
       className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-32"
     >
       <div className="absolute inset-0 -z-10">
-        <Suspense fallback={null}>{ready ? <HeroScene /> : null}</Suspense>
+        <HeroBackdrop />
       </div>
-      <div className="pointer-events-none absolute inset-0 -z-20 veil" />
+
 
       <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
         <div>
