@@ -117,13 +117,19 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
             data-hero-image
             className="relative overflow-hidden rounded-[2rem] border border-border shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
           >
-            <img
-              src={heroHotel}
-              alt="Illuminated facade of Hotel PNS Nakshatra at night"
-              width={912}
-              height={1408}
-              className="h-[58vh] w-full object-cover animate-slow-zoom lg:h-[78vh]"
-            />
+            {cardSlides.map((slide, i) => (
+              <img
+                key={slide.src}
+                src={slide.src}
+                alt={slide.alt}
+                width={912}
+                height={1408}
+                loading={i === 0 ? "eager" : "lazy"}
+                className={`h-[58vh] w-full object-cover transition-opacity duration-[1600ms] ease-out lg:h-[78vh] ${
+                  i === cardIndex ? "opacity-100 animate-ken-burns" : "absolute inset-0 opacity-0"
+                }`}
+              />
+            ))}
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
               <p className="font-display text-2xl text-cream">Est. Vellore</p>
