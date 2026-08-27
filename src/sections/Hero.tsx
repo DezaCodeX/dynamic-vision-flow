@@ -19,6 +19,15 @@ const cardSlides = [
 export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) {
   const root = useRef<HTMLElement>(null);
   const image = useRef<HTMLDivElement>(null);
+  const [cardIndex, setCardIndex] = useState(0);
+
+  useEffect(() => {
+    const id = window.setInterval(
+      () => setCardIndex((i) => (i + 1) % cardSlides.length),
+      4200,
+    );
+    return () => window.clearInterval(id);
+  }, []);
 
   useEffect(() => {
     if (!ready) return;
