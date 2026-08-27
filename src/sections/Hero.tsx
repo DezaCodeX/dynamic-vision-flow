@@ -3,10 +3,7 @@ import gsap from "gsap";
 import heroHotel from "@/assets/hero-hotel.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
 import diningCloud9 from "@/assets/dining-cloud9.jpg";
-import clinqLounge from "@/assets/clinq-lounge.jpg";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
-
-const previews = [roomSuite, diningCloud9, clinqLounge];
 
 /** 3 hotel scenes that cycle inside the hero card like the reference video. */
 const cardSlides = [
@@ -67,21 +64,28 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
       <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
         <div>
           <div className="flex gap-3">
-            {previews.map((src, i) => (
-              <div
-                key={i}
+            {cardSlides.map((slide, i) => (
+              <button
+                key={slide.src}
+                type="button"
+                onClick={() => setCardIndex(i)}
                 data-hero-preview
-                className="h-16 w-20 overflow-hidden rounded-sm border border-border sm:h-20 sm:w-28"
+                aria-label={`Show ${slide.alt}`}
+                className={`h-16 w-20 overflow-hidden rounded-sm border transition-all duration-500 sm:h-20 sm:w-28 ${
+                  i === cardIndex
+                    ? "border-gold opacity-100"
+                    : "border-border opacity-60 hover:opacity-90"
+                }`}
               >
                 <img
-                  src={src}
-                  alt="Hotel PNS Nakshatra interiors in Vellore"
+                  src={slide.src}
+                  alt={slide.alt}
                   loading="lazy"
                   width={1200}
                   height={800}
-                  className="size-full object-cover opacity-80"
+                  className="size-full object-cover"
                 />
-              </div>
+              </button>
             ))}
           </div>
 
@@ -126,19 +130,23 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
             data-hero-image
             className="relative overflow-hidden rounded-[2rem] border border-border shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
           >
-            {cardSlides.map((slide, i) => (
-              <img
-                key={slide.src}
-                src={slide.src}
-                alt={slide.alt}
-                width={912}
-                height={1408}
-                loading={i === 0 ? "eager" : "lazy"}
-                className={`h-[58vh] w-full object-cover transition-opacity duration-[1600ms] ease-out lg:h-[78vh] ${
-                  i === cardIndex ? "opacity-100 animate-ken-burns" : "absolute inset-0 opacity-0"
-                }`}
-              />
-            ))}
+            <div className="relative h-[58vh] w-full lg:h-[78vh]">
+              {cardSlides.map((slide, i) => (
+                <img
+                  key={slide.src}
+                  src={slide.src}
+                  alt={slide.alt}
+                  width={912}
+                  height={1408}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  className={`absolute inset-0 size-full object-cover transition-all duration-[1500ms] ease-out ${
+                    i === cardIndex
+                      ? "opacity-100 scale-100 [clip-path:inset(0_0_0_0)]"
+                      : "opacity-0 scale-110 [clip-path:inset(0_0_0_100%)]"
+                  }`}
+                />
+              ))}
+            </div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
               <p className="font-display text-2xl text-cream">Est. Vellore</p>
