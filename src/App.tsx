@@ -1,6 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
-import { Home } from "./routes/index";
+import { Home } from "./home/Home";
 
 function NotFound() {
   return (
