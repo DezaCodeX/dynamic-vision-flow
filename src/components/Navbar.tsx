@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import favIcon from "@/assets/fav_icon.webp";
 
 const links = [
   { label: "Stay", href: "#stay" },
@@ -25,8 +26,13 @@ export function Navbar({ onBook }: { onBook: () => void }) {
     >
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">
         <a href="#top" className="leading-none" data-cursor="Home">
-          <span className="block font-display text-lg tracking-[0.34em] text-cream">PNS</span>
-          <span className="block text-[0.55rem] tracking-[0.44em] text-gold">NAKSHATRA</span>
+          <span className="flex items-center gap-3">
+            <img src={favIcon} alt="PNS Nakshatra" className="size-10 object-contain" />
+            <span>
+              <span className="block font-wordmark text-[1.55rem] tracking-[0.12em] text-cream">PNS NAKSHATRA</span>
+              <span className="block text-[0.6rem] tracking-[0.35em] text-gold">LUXURY HOTEL</span>
+            </span>
+          </span>
         </a>
 
         <ul className="hidden items-center gap-10 md:flex">
@@ -34,7 +40,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="eyebrow transition-colors hover:text-gold"
+                className="eyebrow text-[0.78rem] transition-colors hover:text-gold"
                 data-cursor="View"
               >
                 {l.label}
@@ -47,7 +53,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           <button
             onClick={onBook}
             data-cursor="Book"
-            className="hidden border border-gold/50 px-6 py-3 text-[0.6rem] tracking-[0.34em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground sm:block"
+            className="hidden border border-gold/50 px-6 py-3 text-[0.7rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground sm:block"
           >
             Book your stay
           </button>
