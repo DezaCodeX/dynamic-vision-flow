@@ -63,7 +63,7 @@ export function HeroBackdrop() {
       </div>
 
       {/* Soft editorial grading keeps the room imagery present without overpowering the type. */}
-      <div className="pointer-events-none absolute inset-0 bg-background/78" />
+      <div className="pointer-events-none absolute inset-0 bg-background/50" />
       <div className="pointer-events-none absolute inset-0 veil" />
       <div className="pointer-events-none absolute inset-0 animate-light-sweep" />
     </div>
