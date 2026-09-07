@@ -63,51 +63,26 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
 
       <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
         <div>
-          <div className="flex gap-3">
-            {cardSlides.map((slide, i) => (
-              <button
-                key={slide.src}
-                type="button"
-                onClick={() => setCardIndex(i)}
-                data-hero-preview
-                aria-label={`Show ${slide.alt}`}
-                className={`h-16 w-20 overflow-hidden rounded-sm border transition-all duration-500 sm:h-20 sm:w-28 ${
-                  i === cardIndex
-                    ? "border-gold opacity-100"
-                    : "border-border opacity-60 hover:opacity-90"
-                }`}
-              >
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  loading="lazy"
-                  width={1200}
-                  height={800}
-                  className="size-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
-
-          <h1 className="mt-8 font-display text-[clamp(2.8rem,8vw,6.2rem)] leading-[0.95] text-cream">
+          <p className="eyebrow mt-10 text-gold">Arquitecta Hotel Collection</p>
+          <h1 className="mt-4 max-w-2xl font-display text-[clamp(3.2rem,8vw,6.8rem)] leading-[0.82] tracking-[-0.025em] text-cream">
             <span className="block overflow-hidden">
               <span data-hero-line className="block">
-                Where comfort
+                PNS Nakshatra
               </span>
             </span>
             <span className="block overflow-hidden">
               <span data-hero-line className="block italic text-gold">
-                meets elegance
+                Luxury Hotel
               </span>
             </span>
           </h1>
 
-          <p data-hero-fade className="eyebrow mt-6">
-            PNS Nakshatra · Vellore
+          <p data-hero-fade className="eyebrow mt-7">
+            Vellore, Tamil Nadu · Rooms · Dining · Celebrations
           </p>
           <p data-hero-fade className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-            A contemporary hotel in the heart of Vellore — rooms designed for rest, a rooftop that
-            watches over the city, and celebration halls made for the days you remember.
+            A calm, considered stay in the heart of Vellore, shaped by warm hospitality, layered
+            interiors, and rooms made for unhurried mornings.
           </p>
 
           <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-8">
@@ -147,7 +122,7 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
                 />
               ))}
             </div>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--hero-overlay)] via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
               <p className="font-display text-2xl text-cream">Est. Vellore</p>
               <p className="eyebrow">3★ Comfort</p>

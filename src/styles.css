@@ -1,12 +1,21 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "../public/colours/palette.css";
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Monkton Incised Solid";
+  src: url("/fonts/monkton-incised-solid.otf") format("opentype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /*
- * PNS NAKSHATRA — cinematic luxury hotel design system.
- * Palette: ink #15130F, cream #E9E0D0, gold #B89B62, brown #30251B, beige #A89C89.
+ * PNS NAKSHATRA — architectural luxury hotel design system.
+ * Palette: ivory #F7F3EC, bronze #CF8C55, pale blue #D8EEFB, navy #293863.
  */
 
 @theme inline {
@@ -41,42 +50,12 @@
   --color-sand: var(--sand);
   --color-ink: var(--ink);
   --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-wordmark: "Monkton Incised Solid", "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.25rem;
-  --ink: oklch(0.18 0.012 78);
-  --background: oklch(0.18 0.012 78);
-  --foreground: oklch(0.92 0.02 82);
-  --cream: oklch(0.92 0.02 82);
-  --sand: oklch(0.72 0.025 80);
-  --gold: oklch(0.71 0.083 82);
-  --card: oklch(0.23 0.015 70);
-  --card-foreground: oklch(0.92 0.02 82);
-  --popover: oklch(0.21 0.014 72);
-  --popover-foreground: oklch(0.92 0.02 82);
-  --primary: oklch(0.71 0.083 82);
-  --primary-foreground: oklch(0.18 0.012 78);
-  --secondary: oklch(0.27 0.018 68);
-  --secondary-foreground: oklch(0.92 0.02 82);
-  --muted: oklch(0.25 0.014 70);
-  --muted-foreground: oklch(0.72 0.025 80);
-  --accent: oklch(0.3 0.03 70);
-  --accent-foreground: oklch(0.92 0.02 82);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.01 82);
-  --border: oklch(0.92 0.02 82 / 14%);
-  --input: oklch(0.92 0.02 82 / 18%);
-  --ring: oklch(0.71 0.083 82);
-  --gradient-veil: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--ink) 92%, transparent) 0%,
-    color-mix(in oklab, var(--ink) 40%, transparent) 45%,
-    color-mix(in oklab, var(--ink) 96%, transparent) 100%
-  );
-  --shadow-cinema: 0 40px 120px -40px oklch(0 0 0 / 0.85);
-  --shadow-gold: 0 0 60px -12px color-mix(in oklab, var(--gold) 55%, transparent);
 }
 
 @layer base {
@@ -99,7 +78,7 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 300;
+    font-weight: 400;
   }
 
   ::selection {
@@ -110,15 +89,15 @@
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.66rem;
-  letter-spacing: 0.42em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--sand);
+  color: var(--ink);
 }
 
 @utility glass-panel {
-  background: color-mix(in oklab, var(--ink) 72%, transparent);
+  background: color-mix(in oklab, var(--background) 88%, transparent);
   backdrop-filter: blur(18px);
-  border: 1px solid color-mix(in oklab, var(--cream) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
 }
 
 @utility veil {

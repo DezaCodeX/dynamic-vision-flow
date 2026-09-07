@@ -1,0 +1,34 @@
+:root {
+  --ink: #293863;
+  --background: #f7f3ec;
+  --foreground: #293863;
+  --cream: #293863;
+  --sand: #69728a;
+  --gold: #cf8c55;
+  --card: #d8eefb;
+  --card-foreground: #293863;
+  --popover: #fffdfa;
+  --popover-foreground: #293863;
+  --primary: #cf8c55;
+  --primary-foreground: #293863;
+  --secondary: #e9dfc0;
+  --secondary-foreground: #293863;
+  --muted: #e9eef2;
+  --muted-foreground: #69728a;
+  --accent: #a9d6f4;
+  --accent-foreground: #293863;
+  --destructive: #b34c46;
+  --destructive-foreground: #fffdfa;
+  --border: #29386326;
+  --input: #29386340;
+  --ring: #cf8c55;
+  --hero-overlay: #293863cc;
+  --gradient-veil: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--background) 70%, transparent) 0%,
+    color-mix(in oklab, var(--background) 24%, transparent) 48%,
+    color-mix(in oklab, var(--background) 66%, transparent) 100%
+  );
+  --shadow-cinema: 0 32px 80px -36px #29386366;
+  --shadow-gold: 0 0 60px -12px color-mix(in oklab, var(--gold) 55%, transparent);
+}
