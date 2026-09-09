@@ -1,5 +1,5 @@
 export function BookingWidget({ onBook }: { onBook: () => void }) {
-  return <section className="relative z-10 mx-auto -mt-10 max-w-[1200px] px-6 lg:px-12" data-home-reveal>
+  return <section className="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-12" data-home-reveal>
     <form onSubmit={(event) => { event.preventDefault(); onBook(); }} className="glass-panel grid grid-cols-2 gap-5 p-6 shadow-[var(--shadow-cinema)] lg:grid-cols-[1fr_1fr_0.8fr_0.8fr_auto] lg:items-end lg:p-8">
       {["Check-in", "Check-out"].map((label) => <label key={label} className="block"><span className="eyebrow">{label}</span><input required type="date" className="mt-3 w-full border-b border-input bg-transparent pb-2 text-sm text-cream outline-none focus:border-gold" /></label>)}
       <label><span className="eyebrow">Guests</span><select className="mt-3 w-full border-b border-input bg-transparent pb-2 text-sm text-cream outline-none"><option>1</option><option>2</option><option>3</option><option>4+</option></select></label>

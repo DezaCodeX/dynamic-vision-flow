@@ -64,6 +64,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           >
             <span className="block h-px w-6 bg-cream" />
             <span className="block h-px w-6 bg-cream" />
+            <span className="block h-px w-6 bg-cream" />
           </button>
         </div>
       </nav>
