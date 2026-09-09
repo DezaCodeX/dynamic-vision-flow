@@ -20,7 +20,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
         solid ? "glass-panel border-x-0 border-t-0 py-3" : "border-transparent py-6"
       }`}
     >
