@@ -54,7 +54,7 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-32"
+      className="relative flex min-h-[82vh] items-center overflow-hidden pb-12 pt-24"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />
@@ -63,24 +63,24 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
 
       <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
         <div>
-          <p className="eyebrow mt-10 text-gold">Arquitecta Hotel Collection</p>
+          <p className="eyebrow mt-10 font-bold text-gold">PNS</p>
           <h1 className="mt-4 max-w-2xl font-display text-[clamp(3.2rem,8vw,6.8rem)] leading-[0.82] tracking-[-0.025em] text-cream">
             <span className="block overflow-hidden">
               <span data-hero-line className="block">
                 PNS Nakshatra
               </span>
             </span>
-            <span className="block overflow-hidden">
+            <span className="block overflow-visible pb-[0.12em]">
               <span data-hero-line className="block italic text-gold">
                 Luxury Hotel
               </span>
             </span>
           </h1>
 
-          <p data-hero-fade className="eyebrow mt-7">
+          <p data-hero-fade className="eyebrow mt-7 text-cream">
             Vellore, Tamil Nadu · Rooms · Dining · Celebrations
           </p>
-          <p data-hero-fade className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
+          <p data-hero-fade className="mt-5 max-w-md text-sm leading-relaxed text-cream/85">
             A calm, considered stay in the heart of Vellore, shaped by warm hospitality, layered
             interiors, and rooms made for unhurried mornings.
           </p>
@@ -89,11 +89,11 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
             <button
               onClick={onBook}
               data-cursor="Book"
-              className="border border-gold bg-gold px-10 py-4 text-[0.6rem] tracking-[0.4em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+              className="border border-gold bg-gold px-10 py-4 text-[0.7rem] font-bold tracking-[0.28em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
             >
               Book your stay
             </button>
-            <a href="#stay" className="eyebrow hover:text-gold">
+            <a href="#stay" className="eyebrow font-bold text-cream hover:text-gold">
               Scroll ↓
             </a>
           </div>
@@ -105,7 +105,7 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
             data-hero-image
             className="relative overflow-hidden rounded-[2rem] border border-border shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
           >
-            <div className="relative h-[58vh] w-full lg:h-[78vh]">
+            <div className="relative h-[52vh] w-full lg:h-[68vh]">
               {cardSlides.map((slide, i) => (
                 <img
                   key={slide.src}
