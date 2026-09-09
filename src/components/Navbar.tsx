@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import favIcon from "@/assets/fav_icon.webp";
 
 const links = [
-  { label: "Stay", href: "#stay" },
-  { label: "Dine", href: "#dine" },
-  { label: "Celebrate", href: "#celebrate" },
-  { label: "Vellore", href: "#vellore" },
+  { label: "Stay", href: "/#stay" },
+  { label: "Dine", href: "/#dine" },
+  { label: "Contact", href: "/contact" },
+  { label: "Vellore", href: "/#vellore" },
 ];
 
 export function Navbar({ onBook }: { onBook: () => void }) {
@@ -24,8 +24,8 @@ export function Navbar({ onBook }: { onBook: () => void }) {
         solid ? "glass-panel border-x-0 border-t-0 py-2" : "border-transparent py-3"
       }`}
     >
-      <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">
-        <a href="#top" className="leading-none" data-cursor="Home">
+      <nav className="mx-auto flex max-w-[1400px] items-center justify-start px-6 lg:px-12">
+        <a href="#top" className="mr-auto leading-none" data-cursor="Home">
           <span className="flex items-center gap-3">
             <img src={favIcon} alt="PNS Nakshatra" className="size-12 object-contain sm:size-14" />
             <span className="text-left font-bold text-gold">
@@ -39,18 +39,14 @@ export function Navbar({ onBook }: { onBook: () => void }) {
         <ul className="hidden items-center gap-10 md:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
-                className="eyebrow text-[0.78rem] transition-colors hover:text-gold"
-                data-cursor="View"
-              >
+              <a href={l.href} className="eyebrow text-[0.78rem] transition-colors hover:text-gold" data-cursor="View">
                 {l.label}
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="flex items-center gap-4">
+        <div className="ml-auto flex items-center gap-4">
           <button
             onClick={onBook}
             data-cursor="Book"

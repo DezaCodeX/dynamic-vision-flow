@@ -3,11 +3,12 @@ import Lenis from "lenis";
 import { Cursor } from "@/components/Cursor";
 import { Navbar } from "@/components/Navbar";
 import { BookingPanel } from "@/components/BookingPanel";
+import { ContactPanel } from "@/components/ContactPanel";
 import { Footer } from "@/sections/Footer";
 import { useReveal } from "@/hooks/useReveal";
 import { setupHomeAnimations } from "@/home/animations/homeAnimations";
 import { Hero } from "@/home/components/Hero/Hero";
-import { BookingWidget } from "@/home/components/Booking/BookingWidget";
+import { BookingWidget, type BookingDetails } from "@/home/components/Booking/BookingWidget";
 import { AboutPreview } from "@/home/components/About/AboutPreview";
 import { RoomsPreview } from "@/home/components/Rooms/RoomsPreview";
 import { DiningPreview } from "@/home/components/Dining/DiningPreview";
@@ -18,11 +19,16 @@ import { Testimonials } from "@/home/components/Testimonials/Testimonials";
 import { LocationPreview } from "@/home/components/Location/LocationPreview";
 import { BookingCTA } from "@/home/components/BookingCTA/BookingCTA";
 
-export function Home() {
+export function Home({ contactOpen = false }: { contactOpen?: boolean }) {
   const [booking, setBooking] = useState(false);
+  const [contact, setContact] = useState(contactOpen);
+  const [bookingDetails, setBookingDetails] = useState<BookingDetails>({ checkIn: "", checkOut: "", rooms: "1", guests: "1" });
   const [bookingBarVisible, setBookingBarVisible] = useState(true);
   const root = useRef<main>(null);
-  const openBooking = useCallback(() => setBooking(true), []);
+  const openBooking = useCallback((details?: BookingDetails) => {
+    if (details) setBookingDetails(details);
+    setBooking(true);
+  }, []);
   useReveal(true);
   useEffect(() => {
     let previousScrollY = window.scrollY;
@@ -35,5 +41,5 @@ export function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   useEffect(() => { const cleanup = root.current ? setupHomeAnimations(root.current) : undefined; const lenis = new Lenis({ duration: 1.2, smoothWheel: true }); let raf = 0; const loop = (time: number) => { lenis.raf(time); raf = requestAnimationFrame(loop); }; raf = requestAnimationFrame(loop); return () => { cleanup?.(); cancelAnimationFrame(raf); lenis.destroy(); }; }, []);
-  return <><Cursor /><Navbar onBook={openBooking} /><div className={`fixed inset-x-0 top-[4.75rem] z-40 transition-all duration-300 ${bookingBarVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-[200%] opacity-0"}`}><BookingWidget onBook={openBooking} /></div><main ref={root} className="relative pt-[10rem] sm:pt-[9rem] md:pt-[8.5rem] lg:pt-[8rem]"><Hero onBook={openBooking} /><AboutPreview /><RoomsPreview /><DiningPreview /><Amenities /><Experience /><GalleryPreview /><Testimonials /><LocationPreview /><BookingCTA onBook={openBooking} /><Footer onBook={openBooking} /></main><BookingPanel open={booking} onClose={() => setBooking(false)} /></>;
+  return <><Cursor /><Navbar onBook={openBooking} /><div className={`fixed inset-x-0 top-[4.75rem] z-40 transition-all duration-300 ${bookingBarVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-[200%] opacity-0"}`}><BookingWidget onBook={openBooking} /></div><main ref={root} className="readable-content relative pt-[10rem] sm:pt-[9rem] md:pt-[8.5rem] lg:pt-[8rem]"><Hero onBook={openBooking} /><AboutPreview /><RoomsPreview /><DiningPreview /><Amenities /><Experience /><GalleryPreview /><Testimonials /><LocationPreview /><BookingCTA onBook={openBooking} /><Footer onBook={openBooking} /></main><BookingPanel open={booking} details={bookingDetails} onClose={() => setBooking(false)} /><ContactPanel open={contact} onClose={() => setContact(false)} /></>;
 }

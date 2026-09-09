@@ -97,6 +97,16 @@
   .bg-ink .text-muted-foreground {
     color: var(--background);
   }
+
+  .readable-content p:not(.eyebrow),
+  .readable-content li {
+    font-size: calc(1em + 2px);
+  }
+
+  .readable-content .site-footer p:not(.eyebrow),
+  .readable-content .site-footer li {
+    font-size: 0.75rem;
+  }
 }
 
 @utility eyebrow {
