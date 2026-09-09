@@ -21,16 +21,17 @@ export function Navbar({ onBook }: { onBook: () => void }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
-        solid ? "glass-panel border-x-0 border-t-0 py-3" : "border-transparent py-6"
+        solid ? "glass-panel border-x-0 border-t-0 py-2" : "border-transparent py-3"
       }`}
     >
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">
         <a href="#top" className="leading-none" data-cursor="Home">
           <span className="flex items-center gap-3">
-            <img src={favIcon} alt="PNS Nakshatra" className="size-10 object-contain" />
-            <span>
-              <span className="block font-wordmark text-[1.55rem] tracking-[0.12em] text-cream">PNS NAKSHATRA</span>
-              <span className="block text-[0.6rem] tracking-[0.35em] text-gold">LUXURY HOTEL</span>
+            <img src={favIcon} alt="PNS Nakshatra" className="size-12 object-contain sm:size-14" />
+            <span className="text-left font-bold text-gold">
+              <span className="block font-wordmark text-[1rem] tracking-[0.18em]">PNS</span>
+              <span className="block w-fit border-b border-gold pb-0.5 font-wordmark text-[1.3rem] tracking-[0.12em]">NAKSHATRA</span>
+              <span className="mt-[2px] block text-right text-[0.58rem] tracking-[0.35em]">LUXURY HOTEL</span>
             </span>
           </span>
         </a>
