@@ -2,15 +2,17 @@
   --ink: #293863;
   --background: #f7f3ec;
   --foreground: #293863;
-  --cream: #293863;
+  --cream: #f7f3ec;
   --sand: #69728a;
   --gold: #a96535;
+  --gold-light: #cf8c55;
+  --gold-bright: #e0a86e;
   --card: #d8eefb;
   --card-foreground: #293863;
   --popover: #fffdfa;
   --popover-foreground: #293863;
   --primary: #cf8c55;
-  --primary-foreground: #293863;
+  --primary-foreground: #f7f3ec;
   --secondary: #e9dfc0;
   --secondary-foreground: #293863;
   --muted: #e9eef2;
@@ -31,4 +33,6 @@
   );
   --shadow-cinema: 0 32px 80px -36px #29386366;
   --shadow-gold: 0 0 60px -12px color-mix(in oklab, var(--gold) 55%, transparent);
+  --shadow-card: 0 20px 60px -24px #29386344;
+  --shadow-card-hover: 0 32px 80px -20px #29386366;
 }

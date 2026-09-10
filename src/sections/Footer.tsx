@@ -10,9 +10,10 @@ export function Footer({ onBook }: { onBook: () => void }) {
           </p>
           <button
             onClick={onBook}
-            className="mt-4 border border-gold px-5 py-2 text-[0.5rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground"
+            className="group relative mt-4 overflow-hidden border border-gold px-5 py-2 text-[0.5rem] tracking-[0.3em] text-gold uppercase transition-all duration-500 hover:shadow-[var(--shadow-gold)]"
           >
-            Book your stay
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-cream">Book your stay</span>
+            <span className="absolute inset-0 -translate-y-full bg-gold transition-transform duration-500 ease-out group-hover:translate-y-0" />
           </button>
         </div>
 
@@ -26,8 +27,9 @@ export function Footer({ onBook }: { onBook: () => void }) {
               ["Vellore", "/#vellore"],
             ].map(([label, href]) => (
               <li key={href}>
-                <a href={href} className="transition-colors hover:text-gold">
+                <a href={href} className="group inline-flex items-center gap-1.5 transition-colors hover:text-gold">
                   {label}
+                  <span className="opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5">→</span>
                 </a>
               </li>
             ))}
@@ -37,14 +39,14 @@ export function Footer({ onBook }: { onBook: () => void }) {
         <div data-reveal>
           <a href="/contact" className="eyebrow text-left transition-colors hover:text-gold">Contact</a>
           <ul className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">
-            <li>Katpadi Road, Vellore 632004</li>
+            <li className="transition-colors hover:text-gold">Katpadi Road, Vellore 632004</li>
             <li>
-              <a href="tel:+914162222222" className="hover:text-gold">
+              <a href="tel:+914162222222" className="transition-colors hover:text-gold">
                 +91 416 222 2222
               </a>
             </li>
             <li>
-              <a href="mailto:stay@pnsnakshatra.com" className="hover:text-gold">
+              <a href="mailto:stay@pnsnakshatra.com" className="transition-colors hover:text-gold">
                 stay@pnsnakshatra.com
               </a>
             </li>

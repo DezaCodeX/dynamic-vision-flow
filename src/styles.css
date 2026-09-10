@@ -46,6 +46,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-bright: var(--gold-bright);
   --color-cream: var(--cream);
   --color-sand: var(--sand);
   --color-ink: var(--ink);
@@ -124,6 +126,12 @@
   border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
 }
 
+@utility glass-dark {
+  background: color-mix(in oklab, var(--ink) 72%, transparent);
+  backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in oklab, var(--gold) 22%, transparent);
+}
+
 @utility veil {
   background-image: var(--gradient-veil);
 }
@@ -137,6 +145,8 @@
     transparent
   );
 }
+
+/* === Keyframe animations === */
 
 @keyframes grain-drift {
   0% { transform: translate3d(0, 0, 0); }
@@ -177,3 +187,118 @@
   animation: light-sweep 12s ease-in-out infinite;
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@utility animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    var(--gold-bright) 25%,
+    var(--gold-light) 50%,
+    var(--gold-bright) 75%,
+    var(--gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@utility animate-float {
+  animation: float-up 5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 40%, transparent); }
+  70% { box-shadow: 0 0 0 14px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@utility animate-pulse-ring {
+  animation: pulse-ring 2.5s ease-out infinite;
+}
+
+@keyframes scroll-hint {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+@utility animate-scroll-hint {
+  animation: scroll-hint 2s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@utility animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* === Card hover effects === */
+
+@utility card-hover {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@utility card-hover-lift {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* === Button effects === */
+
+@utility btn-gold {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s ease;
+}
+
+@utility btn-gold-fill {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* === Scrollbar styling === */
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: color-mix(in oklab, var(--ink) 6%, transparent);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--gold) 50%, transparent);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--gold) 70%, transparent);
+  }
+}

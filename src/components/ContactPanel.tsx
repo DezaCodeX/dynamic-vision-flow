@@ -10,21 +10,21 @@ export function ContactPanel({ open, onClose }: { open: boolean; onClose: () => 
 
   return (
     <div
-      className={`fixed inset-0 z-[85] transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[85] transition-all duration-500 ${
         open ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
       aria-hidden={!open}
     >
-      <button aria-label="Close contact details" onClick={onClose} className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      <button aria-label="Close contact details" onClick={onClose} className="absolute inset-0 bg-ink/80 backdrop-blur-md transition-opacity duration-500" />
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-title"
-        className={`glass-panel absolute left-1/2 top-1/2 max-h-[90vh] w-[min(94vw,900px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto p-6 transition-transform duration-500 sm:p-10 ${
-          open ? "scale-100" : "scale-95"
+        className={`glass-dark absolute left-1/2 top-1/2 max-h-[90vh] w-[min(94vw,900px)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto p-6 transition-all duration-500 sm:p-10 ${
+          open ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
       >
-        <button aria-label="Close contact details" onClick={onClose} className="absolute right-5 top-5 text-cream/70 transition-colors hover:text-gold">
+        <button aria-label="Close contact details" onClick={onClose} className="absolute right-5 top-5 text-cream/60 transition-colors duration-300 hover:text-gold">
           <X className="size-5" />
         </button>
         <p className="eyebrow text-gold">Get in touch</p>
@@ -32,31 +32,43 @@ export function ContactPanel({ open, onClose }: { open: boolean; onClose: () => 
         <div className="gold-rule mt-5" />
 
         <div className="mt-7 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="space-y-5 text-sm text-foreground">
-            <a href="tel:+914162222222" className="flex items-start gap-3 transition-colors hover:text-gold">
-              <Phone className="mt-0.5 size-4 shrink-0 text-gold" />
-              <span><strong className="block text-xs uppercase tracking-[0.16em] text-foreground">Phone</strong>+91 416 222 2222</span>
+          <div className="space-y-5 text-sm text-cream/90">
+            <a href="tel:+914162222222" className="group flex items-start gap-3 transition-colors duration-300 hover:text-gold">
+              <Phone className="mt-0.5 size-4 shrink-0 text-gold transition-transform duration-300 group-hover:scale-110" />
+              <span>
+                <strong className="block text-xs uppercase tracking-[0.16em] text-cream/60">Phone</strong>
+                +91 416 222 2222
+              </span>
             </a>
-            <a href="https://wa.me/914162222222" target="_blank" rel="noreferrer" className="flex items-start gap-3 transition-colors hover:text-gold">
-              <span className="mt-0.5 flex size-4 items-center justify-center rounded-full bg-gold text-[0.55rem] font-bold text-primary-foreground">W</span>
-              <span><strong className="block text-xs uppercase tracking-[0.16em] text-foreground">WhatsApp</strong>Chat with our team</span>
+            <a href="https://wa.me/914162222222" target="_blank" rel="noreferrer" className="group flex items-start gap-3 transition-colors duration-300 hover:text-gold">
+              <span className="mt-0.5 flex size-4 items-center justify-center rounded-full bg-gold text-[0.55rem] font-bold text-cream transition-transform duration-300 group-hover:scale-110">W</span>
+              <span>
+                <strong className="block text-xs uppercase tracking-[0.16em] text-cream/60">WhatsApp</strong>
+                Chat with our team
+              </span>
             </a>
-            <a href="mailto:stay@pnsnakshatra.com" className="flex items-start gap-3 transition-colors hover:text-gold">
-              <span className="mt-0.5 text-gold">@</span>
-              <span><strong className="block text-xs uppercase tracking-[0.16em] text-foreground">Email</strong>stay@pnsnakshatra.com</span>
+            <a href="mailto:stay@pnsnakshatra.com" className="group flex items-start gap-3 transition-colors duration-300 hover:text-gold">
+              <span className="mt-0.5 text-gold transition-transform duration-300 group-hover:scale-110">@</span>
+              <span>
+                <strong className="block text-xs uppercase tracking-[0.16em] text-cream/60">Email</strong>
+                stay@pnsnakshatra.com
+              </span>
             </a>
             <div className="flex items-start gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-gold" />
-              <span><strong className="block text-xs uppercase tracking-[0.16em] text-foreground">Address</strong>Katpadi Road, Vellore 632004, Tamil Nadu</span>
+              <span>
+                <strong className="block text-xs uppercase tracking-[0.16em] text-cream/60">Address</strong>
+                Katpadi Road, Vellore 632004, Tamil Nadu
+              </span>
             </div>
             <div className="flex items-center gap-4 pt-1">
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-gold transition-colors hover:text-foreground"><Instagram className="size-5" /></a>
-              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" className="text-sm font-bold text-gold transition-colors hover:text-foreground">f</a>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-sm font-bold text-gold transition-colors hover:text-foreground">in</a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-gold transition-all duration-300 hover:scale-110 hover:text-cream"><Instagram className="size-5" /></a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" className="text-sm font-bold text-gold transition-all duration-300 hover:scale-110 hover:text-cream">f</a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-sm font-bold text-gold transition-all duration-300 hover:scale-110 hover:text-cream">in</a>
             </div>
           </div>
 
-          <div className="min-h-[260px] overflow-hidden border border-border bg-card/30">
+          <div className="min-h-[260px] overflow-hidden border border-gold/20 bg-ink/30">
             <iframe
               title="PNS Nakshatra location map"
               src="https://www.google.com/maps?q=Katpadi%20Road%2C%20Vellore%20632004&output=embed"

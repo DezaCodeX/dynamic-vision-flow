@@ -15,10 +15,6 @@ const slides = [
   { src: eventsBanquet, alt: "Banquet hall set for a celebration" },
 ];
 
-/**
- * Cinematic hotel backdrop: slow ken-burns crossfade between hotel scenes,
- * with a drifting light sweep and gentle pointer parallax.
- */
 export function HeroBackdrop() {
   const root = useRef<HTMLDivElement>(null);
   const layer = useRef<HTMLDivElement>(null);
@@ -55,15 +51,14 @@ export function HeroBackdrop() {
             src={slide.src}
             alt={slide.alt}
             loading={i === 0 ? "eager" : "lazy"}
-            className={`absolute inset-0 size-full object-cover transition-opacity duration-[2200ms] ease-out ${
-              i === active ? "opacity-100 animate-ken-burns" : "opacity-0"
+            className={`absolute inset-0 size-full object-cover transition-all duration-[2200ms] ease-out ${
+              i === active ? "opacity-100 animate-ken-burns" : "opacity-0 scale-105"
             }`}
           />
         ))}
       </div>
 
-      {/* Soft editorial grading keeps the room imagery present without overpowering the type. */}
-      <div className="pointer-events-none absolute inset-0 bg-background/50" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/40 via-background/50 to-background/70" />
       <div className="pointer-events-none absolute inset-0 veil" />
       <div className="pointer-events-none absolute inset-0 animate-light-sweep" />
     </div>
