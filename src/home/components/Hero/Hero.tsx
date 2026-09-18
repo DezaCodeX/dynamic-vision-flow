@@ -73,110 +73,112 @@ export function Hero({
         <HeroBackdrop />
       </div>
 
-      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-end gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-        <div className="relative z-10 pb-4 lg:pb-16">
-          <p className="eyebrow mt-10 font-bold text-gold">A new constellation in Vellore</p>
-          <h1 className="mt-5 max-w-2xl font-display text-[clamp(3.6rem,8vw,8.4rem)] leading-[0.78] tracking-[-0.025em] text-cream">
-            <span className="block overflow-hidden">
-              <span data-hero-line className="block">
-                Stay above
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
+        <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative z-10 pb-4 lg:pb-16">
+            <p className="eyebrow mt-10 font-bold text-gold">A new constellation in Vellore</p>
+            <h1 className="mt-5 max-w-2xl font-display text-[clamp(3.6rem,8vw,8.4rem)] leading-[0.78] tracking-[-0.025em] text-cream">
+              <span className="block overflow-hidden">
+                <span data-hero-line className="block">
+                  Stay above
+                </span>
               </span>
-            </span>
-            <span className="block overflow-visible pb-[0.12em]">
-              <span data-hero-line className="block italic text-gold">
-                the ordinary.
+              <span className="block overflow-visible pb-[0.12em]">
+                <span data-hero-line className="block italic text-gold">
+                  the ordinary.
+                </span>
               </span>
-            </span>
-          </h1>
+            </h1>
 
-          <p data-hero-fade className="eyebrow mt-8 text-cream">
-            PNS Nakshatra · Vellore, Tamil Nadu
-          </p>
-          <p data-hero-fade className="mt-5 max-w-md text-base leading-relaxed text-cream/85">
-            Thoughtful rooms, sky-high dining, and warm hospitality in the heart of the city.
-          </p>
+            <p data-hero-fade className="eyebrow mt-8 text-cream">
+              PNS Nakshatra · Vellore, Tamil Nadu
+            </p>
+            <p data-hero-fade className="mt-5 max-w-md text-base leading-relaxed text-cream/85">
+              Thoughtful rooms, sky-high dining, and warm hospitality in the heart of the city.
+            </p>
+          </div>
 
-          <form
-            data-hero-fade
-            onSubmit={(event) => {
-              event.preventDefault();
-              onBook(bookingDetails);
-            }}
-            className="glass-panel mt-10 grid w-full max-w-2xl grid-cols-1 gap-4 p-4 sm:grid-cols-[1fr_1fr_0.75fr_auto] sm:items-end"
-          >
-            <label className="block">
-              <span className="eyebrow">Check-in</span>
-              <input
-                required
-                type="date"
-                value={bookingDetails.checkIn}
-                onChange={(event) => updateBookingDetails("checkIn", event.target.value)}
-                className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
-              />
-            </label>
-            <label className="block">
-              <span className="eyebrow">Check-out</span>
-              <input
-                required
-                type="date"
-                value={bookingDetails.checkOut}
-                onChange={(event) => updateBookingDetails("checkOut", event.target.value)}
-                className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
-              />
-            </label>
-            <label className="block">
-              <span className="eyebrow">Guests</span>
-              <select
-                value={bookingDetails.guests}
-                onChange={(event) => updateBookingDetails("guests", event.target.value)}
-                className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
-              >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4+</option>
-              </select>
-            </label>
-            <button
-              type="submit"
-              data-cursor="Book"
-              className="border border-gold bg-gold px-6 py-3 text-[0.7rem] font-bold tracking-[0.2em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+          <div className="relative [perspective:1200px]">
+            <div
+              ref={image}
+              data-hero-image
+              className="relative overflow-hidden rounded-[1.5rem] border border-cream/20 shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
             >
-              Book now
-            </button>
-          </form>
-        </div>
-
-        <div className="relative [perspective:1200px]">
-          <div
-            ref={image}
-            data-hero-image
-            className="relative overflow-hidden rounded-[1.5rem] border border-cream/20 shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
-          >
-            <div className="relative h-[58vh] w-full lg:h-[72vh]">
-              {cardSlides.map((slide, i) => (
-                <img
-                  key={slide.src}
-                  src={slide.src}
-                  alt={slide.alt}
-                  width={912}
-                  height={1408}
-                  loading={i === 0 ? "eager" : "lazy"}
-                  className={`absolute inset-0 size-full object-cover transition-all duration-[1500ms] ease-out ${
-                    i === cardIndex
-                      ? "opacity-100 scale-100 [clip-path:inset(0_0_0_0)]"
-                      : "opacity-0 scale-110 [clip-path:inset(0_0_0_100%)]"
-                  }`}
-                />
-              ))}
-            </div>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--hero-overlay)] via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-              <p className="font-display text-2xl text-cream">Rooms with a point of view</p>
-              <p className="eyebrow text-cream">0{cardIndex + 1} / 03</p>
+              <div className="relative h-[58vh] w-full lg:h-[72vh]">
+                {cardSlides.map((slide, i) => (
+                  <img
+                    key={slide.src}
+                    src={slide.src}
+                    alt={slide.alt}
+                    width={912}
+                    height={1408}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    className={`absolute inset-0 size-full object-cover transition-all duration-[1500ms] ease-out ${
+                      i === cardIndex
+                        ? "opacity-100 scale-100 [clip-path:inset(0_0_0_0)]"
+                        : "opacity-0 scale-110 [clip-path:inset(0_0_0_100%)]"
+                    }`}
+                  />
+                ))}
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--hero-overlay)] via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <p className="font-display text-2xl text-cream">Rooms with a point of view</p>
+                <p className="eyebrow text-cream">0{cardIndex + 1} / 03</p>
+              </div>
             </div>
           </div>
         </div>
+
+        <form
+          data-hero-fade
+          onSubmit={(event) => {
+            event.preventDefault();
+            onBook(bookingDetails);
+          }}
+          className="glass-panel mt-8 grid w-full grid-cols-1 gap-4 p-4 sm:grid-cols-[1fr_1fr_0.75fr_auto] sm:items-end"
+        >
+          <label className="block">
+            <span className="eyebrow">Check-in</span>
+            <input
+              required
+              type="date"
+              value={bookingDetails.checkIn}
+              onChange={(event) => updateBookingDetails("checkIn", event.target.value)}
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+            />
+          </label>
+          <label className="block">
+            <span className="eyebrow">Check-out</span>
+            <input
+              required
+              type="date"
+              value={bookingDetails.checkOut}
+              onChange={(event) => updateBookingDetails("checkOut", event.target.value)}
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+            />
+          </label>
+          <label className="block">
+            <span className="eyebrow">Guests</span>
+            <select
+              value={bookingDetails.guests}
+              onChange={(event) => updateBookingDetails("guests", event.target.value)}
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+            >
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4+</option>
+            </select>
+          </label>
+          <button
+            type="submit"
+            data-cursor="Book"
+            className="border border-gold bg-gold px-6 py-3 text-[0.7rem] font-bold tracking-[0.2em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+          >
+            Book now
+          </button>
+        </form>
       </div>
     </section>
   );
