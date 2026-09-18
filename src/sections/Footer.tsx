@@ -1,6 +1,6 @@
 export function Footer({ onBook }: { onBook: () => void }) {
   return (
-    <footer className="site-footer border-t border-border py-8">
+    <footer className="site-footer dark-surface border-t border-border bg-ink py-10">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-7 px-6 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-12">
         <div data-reveal>
           <p className="font-display text-2xl tracking-[0.16em] text-cream">PNS NAKSHATRA</p>

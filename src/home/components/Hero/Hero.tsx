@@ -44,7 +44,6 @@ export function Hero({
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from("[data-hero-line]", { yPercent: 120, opacity: 0, duration: 1.2, stagger: 0.12 })
-        .from("[data-hero-preview]", { scale: 0.8, opacity: 0, duration: 0.9, stagger: 0.1 }, 0.3)
         .from("[data-hero-fade]", { y: 24, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.7)
         .from("[data-hero-image]", { scale: 1.15, opacity: 0, duration: 1.6 }, 0.1);
     }, root);

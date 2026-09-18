@@ -95,14 +95,14 @@
 
   .dark-surface .text-cream,
   .bg-ink .text-cream {
-    color: var(--color-cream);
+    color: var(--color-cream) !important;
   }
 
   .dark-surface .eyebrow,
   .dark-surface .text-muted-foreground,
   .bg-ink .eyebrow,
   .bg-ink .text-muted-foreground {
-    color: var(--color-ivory);
+    color: var(--color-ivory) !important;
   }
 
   .readable-content p:not(.eyebrow),
