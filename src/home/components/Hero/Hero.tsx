@@ -92,7 +92,10 @@ export function Hero({
             <p data-hero-fade className="eyebrow mt-8 text-cream">
               PNS Nakshatra · Vellore, Tamil Nadu
             </p>
-            <p data-hero-fade className="mt-5 max-w-md text-base leading-relaxed text-cream/85">
+            <p
+              data-hero-fade
+              className="mt-5 max-w-md text-base leading-relaxed text-[var(--color-ivory)]"
+            >
               Thoughtful rooms, sky-high dining, and warm hospitality in the heart of the city.
             </p>
           </div>
