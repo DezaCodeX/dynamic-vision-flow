@@ -4,6 +4,7 @@ import heroHotel from "@/assets/hero-hotel.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
 import diningCloud9 from "@/assets/dining-cloud9.jpg";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
+import type { BookingDetails } from "@/home/components/Booking/BookingWidget";
 
 /** 3 hotel scenes that cycle inside the hero card like the reference video. */
 const cardSlides = [
@@ -12,17 +13,29 @@ const cardSlides = [
   { src: diningCloud9, alt: "Cloud 9 rooftop dining above Vellore" },
 ];
 
-
-export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) {
+export function Hero({
+  ready = true,
+  onBook,
+}: {
+  ready?: boolean;
+  onBook: (details?: BookingDetails) => void;
+}) {
   const root = useRef<HTMLElement>(null);
   const image = useRef<HTMLDivElement>(null);
   const [cardIndex, setCardIndex] = useState(0);
+  const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
+    checkIn: "",
+    checkOut: "",
+    rooms: "1",
+    guests: "1",
+  });
+
+  const updateBookingDetails = (field: "checkIn" | "checkOut" | "guests", value: string) => {
+    setBookingDetails((current) => ({ ...current, [field]: value }));
+  };
 
   useEffect(() => {
-    const id = window.setInterval(
-      () => setCardIndex((i) => (i + 1) % cardSlides.length),
-      4200,
-    );
+    const id = window.setInterval(() => setCardIndex((i) => (i + 1) % cardSlides.length), 4200);
     return () => window.clearInterval(id);
   }, []);
 
@@ -54,58 +67,93 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-[82vh] items-center overflow-hidden pb-12 pt-24"
+      className="relative flex min-h-[90vh] items-center overflow-hidden pb-20 pt-28 sm:pb-28"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />
       </div>
 
-
-      <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
-        <div>
-          <p className="eyebrow mt-10 font-bold text-gold">PNS</p>
-          <h1 className="mt-4 max-w-2xl font-display text-[clamp(3.2rem,8vw,6.8rem)] leading-[0.82] tracking-[-0.025em] text-cream">
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-end gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
+        <div className="relative z-10 pb-4 lg:pb-16">
+          <p className="eyebrow mt-10 font-bold text-gold">A new constellation in Vellore</p>
+          <h1 className="mt-5 max-w-2xl font-display text-[clamp(3.6rem,8vw,8.4rem)] leading-[0.78] tracking-[-0.025em] text-cream">
             <span className="block overflow-hidden">
               <span data-hero-line className="block">
-                PNS Nakshatra
+                Stay above
               </span>
             </span>
             <span className="block overflow-visible pb-[0.12em]">
               <span data-hero-line className="block italic text-gold">
-                Luxury Hotel
+                the ordinary.
               </span>
             </span>
           </h1>
 
-          <p data-hero-fade className="eyebrow mt-7 text-cream">
-            Vellore, Tamil Nadu · Rooms · Dining · Celebrations
+          <p data-hero-fade className="eyebrow mt-8 text-cream">
+            PNS Nakshatra · Vellore, Tamil Nadu
           </p>
-          <p data-hero-fade className="mt-5 max-w-md text-sm leading-relaxed text-cream/85">
-            A calm, considered stay in the heart of Vellore, shaped by warm hospitality, layered
-            interiors, and rooms made for unhurried mornings.
+          <p data-hero-fade className="mt-5 max-w-md text-base leading-relaxed text-cream/85">
+            Thoughtful rooms, sky-high dining, and warm hospitality in the heart of the city.
           </p>
 
-          <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-8">
+          <form
+            data-hero-fade
+            onSubmit={(event) => {
+              event.preventDefault();
+              onBook(bookingDetails);
+            }}
+            className="glass-panel mt-10 grid w-full max-w-2xl grid-cols-1 gap-4 p-4 sm:grid-cols-[1fr_1fr_0.75fr_auto] sm:items-end"
+          >
+            <label className="block">
+              <span className="eyebrow">Check-in</span>
+              <input
+                required
+                type="date"
+                value={bookingDetails.checkIn}
+                onChange={(event) => updateBookingDetails("checkIn", event.target.value)}
+                className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              />
+            </label>
+            <label className="block">
+              <span className="eyebrow">Check-out</span>
+              <input
+                required
+                type="date"
+                value={bookingDetails.checkOut}
+                onChange={(event) => updateBookingDetails("checkOut", event.target.value)}
+                className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              />
+            </label>
+            <label className="block">
+              <span className="eyebrow">Guests</span>
+              <select
+                value={bookingDetails.guests}
+                onChange={(event) => updateBookingDetails("guests", event.target.value)}
+                className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4+</option>
+              </select>
+            </label>
             <button
-              onClick={onBook}
+              type="submit"
               data-cursor="Book"
-              className="border border-gold bg-gold px-10 py-4 text-[0.7rem] font-bold tracking-[0.28em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+              className="border border-gold bg-gold px-6 py-3 text-[0.7rem] font-bold tracking-[0.2em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
             >
-              Book your stay
+              Book now
             </button>
-            <a href="#stay" className="eyebrow font-bold text-cream hover:text-gold">
-              Scroll ↓
-            </a>
-          </div>
+          </form>
         </div>
 
-        <div className="[perspective:1200px]">
+        <div className="relative [perspective:1200px]">
           <div
             ref={image}
             data-hero-image
-            className="relative overflow-hidden rounded-[2rem] border border-border shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
+            className="relative overflow-hidden rounded-[1.5rem] border border-cream/20 shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
           >
-            <div className="relative h-[52vh] w-full lg:h-[68vh]">
+            <div className="relative h-[58vh] w-full lg:h-[72vh]">
               {cardSlides.map((slide, i) => (
                 <img
                   key={slide.src}
@@ -124,8 +172,8 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
             </div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--hero-overlay)] via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-              <p className="font-display text-2xl text-cream">Est. Vellore</p>
-              <p className="eyebrow">3★ Comfort</p>
+              <p className="font-display text-2xl text-cream">Rooms with a point of view</p>
+              <p className="eyebrow text-cream">0{cardIndex + 1} / 03</p>
             </div>
           </div>
         </div>

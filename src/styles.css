@@ -65,6 +65,7 @@
 
   html {
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -107,6 +108,11 @@
   .readable-content .site-footer li {
     font-size: 0.75rem;
   }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
 }
 
 @utility eyebrow {
@@ -119,9 +125,24 @@
 }
 
 @utility glass-panel {
-  background: color-mix(in oklab, var(--background) 88%, transparent);
+  background: color-mix(in oklab, var(--background) 90%, transparent);
   backdrop-filter: blur(18px);
   border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @utility veil {

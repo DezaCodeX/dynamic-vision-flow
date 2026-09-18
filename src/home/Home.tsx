@@ -8,7 +8,7 @@ import { Footer } from "@/sections/Footer";
 import { useReveal } from "@/hooks/useReveal";
 import { setupHomeAnimations } from "@/home/animations/homeAnimations";
 import { Hero } from "@/home/components/Hero/Hero";
-import { BookingWidget, type BookingDetails } from "@/home/components/Booking/BookingWidget";
+import type { BookingDetails } from "@/home/components/Booking/BookingWidget";
 import { AboutPreview } from "@/home/components/About/AboutPreview";
 import { RoomsPreview } from "@/home/components/Rooms/RoomsPreview";
 import { DiningPreview } from "@/home/components/Dining/DiningPreview";
@@ -22,8 +22,12 @@ import { BookingCTA } from "@/home/components/BookingCTA/BookingCTA";
 export function Home({ contactOpen = false }: { contactOpen?: boolean }) {
   const [booking, setBooking] = useState(false);
   const [contact, setContact] = useState(contactOpen);
-  const [bookingDetails, setBookingDetails] = useState<BookingDetails>({ checkIn: "", checkOut: "", rooms: "1", guests: "1" });
-  const [bookingBarVisible, setBookingBarVisible] = useState(true);
+  const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
+    checkIn: "",
+    checkOut: "",
+    rooms: "1",
+    guests: "1",
+  });
   const root = useRef<main>(null);
   const openBooking = useCallback((details?: BookingDetails) => {
     if (details) setBookingDetails(details);
@@ -31,15 +35,39 @@ export function Home({ contactOpen = false }: { contactOpen?: boolean }) {
   }, []);
   useReveal(true);
   useEffect(() => {
-    let previousScrollY = window.scrollY;
-    const onScroll = () => {
-      const currentScrollY = window.scrollY;
-      setBookingBarVisible(currentScrollY <= 16 || currentScrollY < previousScrollY);
-      previousScrollY = currentScrollY;
+    const cleanup = root.current ? setupHomeAnimations(root.current) : undefined;
+    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    let raf = 0;
+    const loop = (time: number) => {
+      lenis.raf(time);
+      raf = requestAnimationFrame(loop);
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    raf = requestAnimationFrame(loop);
+    return () => {
+      cleanup?.();
+      cancelAnimationFrame(raf);
+      lenis.destroy();
+    };
   }, []);
-  useEffect(() => { const cleanup = root.current ? setupHomeAnimations(root.current) : undefined; const lenis = new Lenis({ duration: 1.2, smoothWheel: true }); let raf = 0; const loop = (time: number) => { lenis.raf(time); raf = requestAnimationFrame(loop); }; raf = requestAnimationFrame(loop); return () => { cleanup?.(); cancelAnimationFrame(raf); lenis.destroy(); }; }, []);
-  return <><Cursor /><Navbar onBook={openBooking} /><div className={`fixed inset-x-0 top-[4.75rem] z-40 transition-all duration-300 ${bookingBarVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-[200%] opacity-0"}`}><BookingWidget onBook={openBooking} /></div><main ref={root} className="readable-content relative pt-[10rem] sm:pt-[9rem] md:pt-[8.5rem] lg:pt-[8rem]"><Hero onBook={openBooking} /><AboutPreview /><RoomsPreview /><DiningPreview /><Amenities /><Experience /><GalleryPreview /><Testimonials /><LocationPreview /><BookingCTA onBook={openBooking} /><Footer onBook={openBooking} /></main><BookingPanel open={booking} details={bookingDetails} onClose={() => setBooking(false)} /><ContactPanel open={contact} onClose={() => setContact(false)} /></>;
+  return (
+    <>
+      <Cursor />
+      <Navbar onBook={openBooking} />
+      <main ref={root} className="readable-content relative">
+        <Hero onBook={openBooking} />
+        <AboutPreview />
+        <RoomsPreview />
+        <DiningPreview />
+        <Amenities />
+        <Experience />
+        <GalleryPreview />
+        <Testimonials />
+        <LocationPreview />
+        <BookingCTA onBook={openBooking} />
+        <Footer onBook={openBooking} />
+      </main>
+      <BookingPanel open={booking} details={bookingDetails} onClose={() => setBooking(false)} />
+      <ContactPanel open={contact} onClose={() => setContact(false)} />
+    </>
+  );
 }

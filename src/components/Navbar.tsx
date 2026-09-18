@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import favIcon from "@/assets/fav_icon.webp";
+import logo from "@/assets/pns logo.png";
 
 const links = [
   { label: "Stay", href: "/#stay" },
@@ -21,19 +21,12 @@ export function Navbar({ onBook }: { onBook: () => void }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
-        solid ? "glass-panel border-x-0 border-t-0 py-2" : "border-transparent py-3"
+        solid ? "glass-panel border-x-0 border-t-0 py-2" : "border-transparent py-4"
       }`}
     >
-      <nav className="mx-auto flex max-w-[1400px] items-center justify-start px-6 lg:px-12">
-        <a href="#top" className="mr-auto leading-none" data-cursor="Home">
-          <span className="flex items-center gap-3">
-            <img src={favIcon} alt="PNS Nakshatra" className="size-12 object-contain sm:size-14" />
-            <span className="text-left font-bold text-gold">
-              <span className="block font-wordmark text-[1rem] tracking-[0.18em]">PNS</span>
-              <span className="block w-fit border-b border-gold pb-0.5 font-wordmark text-[1.3rem] tracking-[0.12em]">NAKSHATRA</span>
-              <span className="mt-[2px] block text-right text-[0.58rem] tracking-[0.35em]">LUXURY HOTEL</span>
-            </span>
-          </span>
+      <nav className="mx-auto flex max-w-[1440px] items-center justify-between px-5 lg:px-10">
+        <a href="#top" className="leading-none" data-cursor="Home">
+          <img src={logo} alt="PNS Nakshatra" className="h-14 w-auto object-contain sm:h-[4.5rem]" />
         </a>
 
         <ul className="hidden items-center gap-10 md:flex">
@@ -46,11 +39,11 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           ))}
         </ul>
 
-        <div className="ml-auto flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <button
             onClick={onBook}
             data-cursor="Book"
-            className="hidden border border-gold/50 px-6 py-3 text-[0.7rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground sm:block"
+            className="hidden border border-gold/60 bg-background/10 px-6 py-3 text-[0.7rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground sm:block"
           >
             Book your stay
           </button>
