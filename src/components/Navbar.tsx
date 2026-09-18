@@ -21,18 +21,28 @@ export function Navbar({ onBook }: { onBook: () => void }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
-        solid ? "glass-panel border-x-0 border-t-0 py-2" : "border-transparent py-4"
+        solid
+          ? "glass-panel border-x-0 border-t-0 py-2"
+          : "border-transparent py-[clamp(0.75rem,2vw,1rem)]"
       }`}
     >
-      <nav className="mx-auto flex max-w-[1440px] items-center justify-between px-5 lg:px-10">
+      <nav className="flex w-full items-center justify-between px-[clamp(1rem,3vw,2rem)]">
         <a href="#top" className="leading-none" data-cursor="Home">
-          <img src={logo} alt="PNS Nakshatra" className="h-14 w-auto object-contain sm:h-[4.5rem]" />
+          <img
+            src={logo}
+            alt="PNS Nakshatra"
+            className="h-[clamp(3.25rem,5vw,4.5rem)] w-auto object-contain"
+          />
         </a>
 
-        <ul className="hidden items-center gap-10 md:flex">
+        <ul className="hidden items-center gap-[clamp(1.25rem,3vw,2.5rem)] lg:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="eyebrow text-[0.78rem] transition-colors hover:text-gold" data-cursor="View">
+              <a
+                href={l.href}
+                className="eyebrow text-[0.78rem] transition-colors hover:text-gold"
+                data-cursor="View"
+              >
                 {l.label}
               </a>
             </li>
@@ -43,14 +53,14 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           <button
             onClick={onBook}
             data-cursor="Book"
-            className="hidden border border-gold/60 bg-background/10 px-6 py-3 text-[0.7rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground sm:block"
+            className="hidden border border-gold/60 bg-background/10 px-6 py-3 text-[0.7rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground lg:block"
           >
             Book your stay
           </button>
           <button
             aria-label="Menu"
             onClick={() => setOpen((v) => !v)}
-            className="flex size-9 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="flex size-9 flex-col items-center justify-center gap-1.5 lg:hidden"
           >
             <span className="block h-px w-6 bg-cream" />
             <span className="block h-px w-6 bg-cream" />
@@ -60,7 +70,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
       </nav>
 
       {open ? (
-        <div className="glass-panel mx-6 mt-3 flex flex-col gap-5 p-6 md:hidden">
+        <div className="glass-panel mx-[clamp(1rem,4vw,1.5rem)] mt-3 flex flex-col gap-5 p-6 lg:hidden">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="eyebrow" onClick={() => setOpen(false)}>
               {l.label}

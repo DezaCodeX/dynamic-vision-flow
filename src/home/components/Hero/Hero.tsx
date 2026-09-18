@@ -67,17 +67,17 @@ export function Hero({
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-[90vh] items-center overflow-hidden pb-20 pt-28 sm:pb-28"
+      className="relative flex min-h-screen items-center overflow-hidden pb-[clamp(3rem,8vh,7rem)] pt-[clamp(7rem,14vh,10rem)]"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />
       </div>
 
       <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
-        <div className="grid grid-cols-1 items-end gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid grid-cols-1 items-end gap-[clamp(2.5rem,6vw,5rem)] lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative z-10 pb-4 lg:pb-16">
             <p className="eyebrow mt-10 font-bold text-gold">A new constellation in Vellore</p>
-            <h1 className="mt-5 max-w-2xl font-display text-[clamp(3.6rem,8vw,8.4rem)] leading-[0.78] tracking-[-0.025em] text-cream">
+            <h1 className="mt-5 max-w-2xl font-display text-[clamp(2.9rem,8vw,8.4rem)] leading-[0.82] tracking-[-0.025em] text-cream">
               <span className="block overflow-hidden">
                 <span data-hero-line className="block">
                   Stay above
@@ -104,7 +104,7 @@ export function Hero({
               data-hero-image
               className="relative overflow-hidden rounded-[1.5rem] border border-cream/20 shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
             >
-              <div className="relative h-[58vh] w-full lg:h-[72vh]">
+              <div className="relative h-[clamp(24rem,64vh,48rem)] w-full">
                 {cardSlides.map((slide, i) => (
                   <img
                     key={slide.src}
@@ -136,7 +136,7 @@ export function Hero({
             event.preventDefault();
             onBook(bookingDetails);
           }}
-          className="glass-panel mt-8 grid w-full grid-cols-1 gap-4 p-4 sm:grid-cols-[1fr_1fr_0.75fr_auto] sm:items-end"
+          className="glass-panel mt-8 grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
         >
           <label className="block">
             <span className="eyebrow">Check-in</span>
