@@ -21,13 +21,65 @@ export function BookingWidget({ onBook }: { onBook: (details: BookingDetails) =>
     setDetails((current) => ({ ...current, [field]: value }));
   };
 
-  return <section className="relative mx-auto max-w-[1240px] px-3 lg:px-10" data-home-reveal>
-    <form onSubmit={(event) => { event.preventDefault(); onBook(details); }} className="glass-panel grid grid-cols-2 gap-3 rounded-sm p-3 shadow-[var(--shadow-cinema)] lg:grid-cols-[1fr_1fr_0.8fr_0.8fr_auto] lg:items-end lg:gap-5 lg:p-4">
-      <label className="block"><span className="eyebrow">Check-in</span><input required type="date" value={details.checkIn} onChange={(event) => updateDetails("checkIn", event.target.value)} className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none focus:border-gold" /></label>
-      <label className="block"><span className="eyebrow">Check-out</span><input required type="date" value={details.checkOut} onChange={(event) => updateDetails("checkOut", event.target.value)} className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none focus:border-gold" /></label>
-      <label><span className="eyebrow">Guests</span><select value={details.guests} onChange={(event) => updateDetails("guests", event.target.value)} className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none"><option>1</option><option>2</option><option>3</option><option>4+</option></select></label>
-      <label><span className="eyebrow">Rooms</span><select value={details.rooms} onChange={(event) => updateDetails("rooms", event.target.value)} className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none"><option>1</option><option>2</option><option>3</option><option>4+</option></select></label>
-      <button className="col-span-2 border border-gold bg-gold px-5 py-1.5 text-[0.6rem] tracking-[0.35em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold lg:col-span-1">Book now</button>
-    </form>
-  </section>;
+  return (
+    <section className="relative mx-auto max-w-[1240px] px-3 lg:px-10" data-home-reveal>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          onBook(details);
+        }}
+        className="glass-panel grid grid-cols-2 gap-3 rounded-sm p-3 shadow-[var(--shadow-cinema)] lg:grid-cols-[1fr_1fr_0.8fr_0.8fr_auto] lg:items-end lg:gap-5 lg:p-4"
+      >
+        <label className="block">
+          <span className="eyebrow">Check-in</span>
+          <input
+            required
+            type="date"
+            value={details.checkIn}
+            onChange={(event) => updateDetails("checkIn", event.target.value)}
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none focus:border-gold"
+          />
+        </label>
+        <label className="block">
+          <span className="eyebrow">Check-out</span>
+          <input
+            required
+            type="date"
+            value={details.checkOut}
+            onChange={(event) => updateDetails("checkOut", event.target.value)}
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none focus:border-gold"
+          />
+        </label>
+        <label>
+          <span className="eyebrow">Guests</span>
+          <select
+            value={details.guests}
+            onChange={(event) => updateDetails("guests", event.target.value)}
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none"
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+          </select>
+        </label>
+        <label>
+          <span className="eyebrow">Rooms</span>
+          <select
+            value={details.rooms}
+            onChange={(event) => updateDetails("rooms", event.target.value)}
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none"
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+          </select>
+        </label>
+        <button className="luxury-button luxury-button-hover col-span-2 px-5 py-1.5 lg:col-span-1">
+          Book now
+        </button>
+      </form>
+    </section>
+  );
 }

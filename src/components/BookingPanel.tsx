@@ -1,7 +1,15 @@
 import { useEffect } from "react";
 import type { BookingDetails } from "@/home/components/Booking/BookingWidget";
 
-export function BookingPanel({ open, details, onClose }: { open: boolean; details: BookingDetails; onClose: () => void }) {
+export function BookingPanel({
+  open,
+  details,
+  onClose,
+}: {
+  open: boolean;
+  details: BookingDetails;
+  onClose: () => void;
+}) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
@@ -37,11 +45,23 @@ export function BookingPanel({ open, details, onClose }: { open: boolean; detail
         >
           <label className="block">
             <span className="eyebrow">Check in</span>
-            <input type="date" required value={details.checkIn} readOnly className="mt-3 w-full border-b border-input bg-transparent pb-2 text-sm text-cream outline-none focus:border-gold" />
+            <input
+              type="date"
+              required
+              value={details.checkIn}
+              readOnly
+              className="mt-3 w-full border-b border-input bg-transparent pb-2 text-[length:var(--type-body-small)] text-cream outline-none focus:border-gold"
+            />
           </label>
           <label className="block">
             <span className="eyebrow">Check out</span>
-            <input type="date" required value={details.checkOut} readOnly className="mt-3 w-full border-b border-input bg-transparent pb-2 text-sm text-cream outline-none focus:border-gold" />
+            <input
+              type="date"
+              required
+              value={details.checkOut}
+              readOnly
+              className="mt-3 w-full border-b border-input bg-transparent pb-2 text-[length:var(--type-body-small)] text-cream outline-none focus:border-gold"
+            />
           </label>
           {[
             { label: "Rooms", options: ["1", "2", "3", "4+"] },
@@ -49,7 +69,11 @@ export function BookingPanel({ open, details, onClose }: { open: boolean; detail
           ].map((f) => (
             <label key={f.label} className="block">
               <span className="eyebrow">{f.label}</span>
-              <select value={details[f.label.toLowerCase() as "rooms" | "guests"]} readOnly className="mt-3 w-full border-b border-input bg-transparent pb-2 text-sm text-cream outline-none focus:border-gold">
+              <select
+                value={details[f.label.toLowerCase() as "rooms" | "guests"]}
+                readOnly
+                className="mt-3 w-full border-b border-input bg-transparent pb-2 text-[length:var(--type-body-small)] text-cream outline-none focus:border-gold"
+              >
                 {f.options.map((o) => (
                   <option key={o} value={o} className="bg-card">
                     {o}
@@ -60,7 +84,7 @@ export function BookingPanel({ open, details, onClose }: { open: boolean; detail
           ))}
           <button
             type="submit"
-            className="sm:col-span-2 mt-2 border border-gold bg-gold px-8 py-4 text-[0.6rem] tracking-[0.4em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+            className="luxury-button luxury-button-hover sm:col-span-2 mt-2 px-8 py-4"
           >
             Check availability
           </button>

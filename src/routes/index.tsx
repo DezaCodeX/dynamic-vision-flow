@@ -48,7 +48,7 @@ export function Home() {
 
       <button
         onClick={openBooking}
-        className="glass-panel fixed bottom-6 right-6 z-40 px-6 py-4 text-[0.6rem] tracking-[0.34em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground"
+        className="luxury-button luxury-button-hover fixed bottom-6 right-6 z-40 px-6 py-4"
       >
         Book your stay
       </button>

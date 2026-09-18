@@ -44,7 +44,6 @@ export function Hero({
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from("[data-hero-line]", { yPercent: 120, opacity: 0, duration: 1.2, stagger: 0.12 })
-        .from("[data-hero-preview]", { scale: 0.8, opacity: 0, duration: 0.9, stagger: 0.1 }, 0.3)
         .from("[data-hero-fade]", { y: 24, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.7)
         .from("[data-hero-image]", { scale: 1.15, opacity: 0, duration: 1.6 }, 0.1);
     }, root);
@@ -67,7 +66,7 @@ export function Hero({
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pb-[clamp(3rem,8vh,7rem)] pt-[clamp(7rem,14vh,10rem)]"
+      className="dark-surface relative flex min-h-screen items-center overflow-hidden pb-[clamp(3rem,8vh,7rem)] pt-[clamp(7rem,14vh,10rem)]"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />
@@ -93,7 +92,10 @@ export function Hero({
             <p data-hero-fade className="eyebrow mt-8 text-cream">
               PNS Nakshatra · Vellore, Tamil Nadu
             </p>
-            <p data-hero-fade className="mt-5 max-w-md text-base leading-relaxed text-cream/85">
+            <p
+              data-hero-fade
+              className="mt-5 max-w-md text-base leading-relaxed text-[var(--color-ivory)]"
+            >
               Thoughtful rooms, sky-high dining, and warm hospitality in the heart of the city.
             </p>
           </div>
@@ -136,34 +138,44 @@ export function Hero({
             event.preventDefault();
             onBook(bookingDetails);
           }}
-          className="glass-panel mt-8 grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
+          className="booking-bar glass-panel mt-8 grid w-full grid-cols-1 gap-4 rounded-md p-4 shadow-[0_16px_40px_-24px_rgba(41,56,99,0.55)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_46px_-24px_rgba(41,56,99,0.65)] focus-within:-translate-y-0.5 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
         >
           <label className="block">
-            <span className="eyebrow">Check-in</span>
+            <span
+              className="eyebrow !text-[var(--color-navy)]"
+              style={{ color: "var(--color-navy)" }}
+            >
+              Check-in
+            </span>
             <input
               required
               type="date"
               value={bookingDetails.checkIn}
               onChange={(event) => updateBookingDetails("checkIn", event.target.value)}
-              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm !text-[var(--color-navy)] outline-none focus:border-gold"
             />
           </label>
           <label className="block">
-            <span className="eyebrow">Check-out</span>
+            <span
+              className="eyebrow !text-[var(--color-navy)]"
+              style={{ color: "var(--color-navy)" }}
+            >
+              Check-out
+            </span>
             <input
               required
               type="date"
               value={bookingDetails.checkOut}
               onChange={(event) => updateBookingDetails("checkOut", event.target.value)}
-              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm !text-[var(--color-navy)] outline-none focus:border-gold"
             />
           </label>
           <label className="block">
-            <span className="eyebrow">Guests</span>
+            <span className="eyebrow !text-[var(--color-navy)]">Guests</span>
             <select
               value={bookingDetails.guests}
               onChange={(event) => updateBookingDetails("guests", event.target.value)}
-              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm !text-[var(--color-navy)] outline-none focus:border-gold"
             >
               <option>1</option>
               <option>2</option>
@@ -174,7 +186,7 @@ export function Hero({
           <button
             type="submit"
             data-cursor="Book"
-            className="border border-gold bg-gold px-6 py-3 text-[0.7rem] font-bold tracking-[0.2em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+            className="luxury-button luxury-button-hover px-6 py-3"
           >
             Book now
           </button>

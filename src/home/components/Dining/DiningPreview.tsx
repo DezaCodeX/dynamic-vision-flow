@@ -1,2 +1,44 @@
 import { diningExperiences } from "@/home/data/homeData";
-export function DiningPreview() { return <section id="dine" className="mx-auto max-w-[1400px] px-6 py-28 lg:px-12 lg:py-40"><p className="eyebrow" data-home-reveal>03 — Dine</p><h2 className="mt-5 max-w-4xl font-display text-[clamp(2.5rem,6vw,5.2rem)] leading-none text-cream" data-home-reveal>Good evenings begin <span className="italic text-gold">here.</span></h2><div className="mt-16 grid gap-6 md:grid-cols-3">{diningExperiences.map((item) => <article key={item.id} data-home-reveal><div className="overflow-hidden border border-border"><img src={item.image} alt={`${item.name} at PNS Nakshatra`} loading="lazy" width="1400" height="900" className="aspect-[4/3] w-full object-cover transition-transform duration-1000 hover:scale-105" /></div><p className="eyebrow mt-5">{item.tag}</p><h3 className="mt-2 font-display text-3xl text-cream">{item.name}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.detail}</p></article>)}</div><a href="#dine" className="eyebrow mt-12 inline-block border-b border-gold pb-2 text-gold">Explore dining</a></section>; }
+export function DiningPreview() {
+  return (
+    <section id="dine" className="bg-[var(--color-surface-blue)] px-6 py-24 lg:px-12 lg:py-32">
+      <div className="mx-auto max-w-[1400px]">
+        <p className="eyebrow" data-home-reveal>
+          03 — Dine
+        </p>
+        <h2
+          className="mt-5 max-w-4xl font-display text-[clamp(2.5rem,6vw,5.2rem)] leading-none text-cream"
+          data-home-reveal
+        >
+          Good evenings begin <span className="italic text-gold">here.</span>
+        </h2>
+        <div className="mt-12 grid gap-6 md:grid-cols-12">
+          {diningExperiences.map((item, index) => (
+            <article
+              key={item.id}
+              className={index === 0 ? "md:col-span-6" : "md:col-span-3"}
+              data-home-reveal
+            >
+              <div className="overflow-hidden border border-gold/40">
+                <img
+                  src={item.image}
+                  alt={`${item.name} at PNS Nakshatra`}
+                  loading="lazy"
+                  width="1400"
+                  height="900"
+                  className={`${index === 0 ? "aspect-[16/10]" : "aspect-[4/5]"} w-full object-cover transition-transform duration-1000 hover:scale-105`}
+                />
+              </div>
+              <p className="eyebrow mt-5">{item.tag}</p>
+              <h3 className="mt-2 font-display text-3xl text-cream">{item.name}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.detail}</p>
+            </article>
+          ))}
+        </div>
+        <a href="#dine" className="text-link mt-10">
+          Explore dining
+        </a>
+      </div>
+    </section>
+  );
+}

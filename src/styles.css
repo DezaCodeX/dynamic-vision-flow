@@ -15,7 +15,7 @@
 
 /*
  * PNS NAKSHATRA — architectural luxury hotel design system.
- * Palette: ivory #F7F3EC, bronze #CF8C55, pale blue #D8EEFB, navy #293863.
+ * Palette: midnight navy, warm ivory, and muted champagne gold.
  */
 
 @theme inline {
@@ -56,6 +56,10 @@
 
 :root {
   --radius: 0.25rem;
+  --type-body: clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);
+  --type-body-small: clamp(0.9375rem, 0.92rem + 0.08vw, 1rem);
+  --type-label: clamp(0.6875rem, 0.67rem + 0.08vw, 0.75rem);
+  --type-button: clamp(0.6875rem, 0.67rem + 0.08vw, 0.75rem);
 }
 
 @layer base {
@@ -93,20 +97,28 @@
     line-height: 1.6;
   }
 
-  .bg-ink .text-cream,
+  .dark-surface .text-cream,
+  .bg-ink .text-cream {
+    color: var(--color-cream) !important;
+  }
+
+  .dark-surface .eyebrow,
+  .dark-surface .text-muted-foreground,
   .bg-ink .eyebrow,
   .bg-ink .text-muted-foreground {
-    color: var(--background);
+    color: var(--color-ivory) !important;
   }
 
   .readable-content p:not(.eyebrow),
   .readable-content li {
-    font-size: calc(1em + 2px);
+    font-size: var(--type-body);
+    line-height: 1.65;
   }
 
   .readable-content .site-footer p:not(.eyebrow),
   .readable-content .site-footer li {
-    font-size: 0.75rem;
+    font-size: var(--type-body-small);
+    line-height: 1.55;
   }
 
   :focus-visible {
@@ -117,17 +129,132 @@
 
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: var(--type-label);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.35;
   text-transform: uppercase;
   color: var(--ink);
 }
 
 @utility glass-panel {
-  background: color-mix(in oklab, var(--background) 90%, transparent);
+  background: color-mix(in oklab, var(--background) 94%, transparent);
   backdrop-filter: blur(18px);
-  border: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
+  border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
+}
+
+.booking-bar input,
+.booking-bar select {
+  color-scheme: light;
+}
+
+.booking-bar input::placeholder {
+  color: var(--color-navy);
+  opacity: 0.72;
+}
+
+@utility luxury-button {
+  border: 1px solid color-mix(in oklab, var(--gold) 46%, var(--color-ivory));
+  background: var(--color-navy);
+  color: var(--color-ivory);
+  border-radius: 0.25rem;
+  font-family: var(--font-sans);
+  font-size: var(--type-button);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    letter-spacing 180ms ease,
+    transform 180ms ease;
+}
+
+@utility luxury-button-ghost {
+  border: 1px solid color-mix(in oklab, var(--color-navy) 48%, transparent);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 0.25rem;
+  font-family: var(--font-sans);
+  font-size: var(--type-button);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    letter-spacing 180ms ease,
+    transform 180ms ease;
+}
+
+@utility luxury-button-hover {
+  &:hover {
+    background: var(--color-navy-soft);
+    border-color: color-mix(in oklab, var(--gold) 58%, var(--color-ivory));
+    letter-spacing: 0.2em;
+    transform: translateY(-1px);
+  }
+}
+
+@utility text-link {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  padding-bottom: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: var(--type-label);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition:
+    color 180ms ease,
+    letter-spacing 180ms ease;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: var(--gold);
+    content: "";
+    transform: scaleX(0.38);
+    transform-origin: left;
+    transition: transform 220ms ease;
+  }
+
+  &:hover {
+    color: var(--gold);
+    letter-spacing: 0.17em;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@utility dark-surface {
+  color: var(--color-ivory);
+
+  .luxury-button-ghost {
+    border-color: color-mix(in oklab, var(--color-ivory) 58%, transparent);
+    color: var(--color-ivory);
+
+    &:hover {
+      background: color-mix(in oklab, var(--color-ivory) 12%, transparent);
+      border-color: var(--color-ivory);
+    }
+  }
+
+  .text-link {
+    color: var(--color-ivory);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -160,13 +287,21 @@
 }
 
 @keyframes grain-drift {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-3%, -3%, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-3%, -3%, 0);
+  }
 }
 
 @keyframes slow-zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.12); }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.12);
+  }
 }
 
 @utility animate-slow-zoom {
@@ -174,8 +309,12 @@
 }
 
 @keyframes ken-burns {
-  0% { transform: scale(1.04) translate3d(0, 0, 0); }
-  100% { transform: scale(1.16) translate3d(-1.5%, -1.5%, 0); }
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.16) translate3d(-1.5%, -1.5%, 0);
+  }
 }
 
 @utility animate-ken-burns {
@@ -183,9 +322,17 @@
 }
 
 @keyframes light-sweep {
-  0% { opacity: 0; transform: translate3d(-40%, 0, 0); }
-  35% { opacity: 0.55; }
-  100% { opacity: 0; transform: translate3d(60%, 0, 0); }
+  0% {
+    opacity: 0;
+    transform: translate3d(-40%, 0, 0);
+  }
+  35% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(60%, 0, 0);
+  }
 }
 
 @utility animate-light-sweep {
@@ -197,4 +344,3 @@
   );
   animation: light-sweep 12s ease-in-out infinite;
 }
-
