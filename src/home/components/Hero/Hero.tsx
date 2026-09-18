@@ -174,7 +174,7 @@ export function Hero({
           <button
             type="submit"
             data-cursor="Book"
-            className="border border-gold bg-gold px-6 py-3 text-[0.7rem] font-bold tracking-[0.2em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+            className="luxury-button luxury-button-hover px-6 py-3"
           >
             Book now
           </button>

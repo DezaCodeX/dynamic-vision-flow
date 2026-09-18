@@ -53,7 +53,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           <button
             onClick={onBook}
             data-cursor="Book"
-            className="hidden border border-gold/60 bg-background/10 px-6 py-3 text-[0.7rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground lg:block"
+            className="luxury-button luxury-button-hover hidden px-6 py-3 lg:block"
           >
             Book your stay
           </button>
@@ -81,7 +81,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
               setOpen(false);
               onBook();
             }}
-            className="border border-gold/50 px-5 py-3 text-[0.6rem] tracking-[0.34em] text-gold uppercase"
+            className="luxury-button luxury-button-hover px-5 py-3"
           >
             Book your stay
           </button>

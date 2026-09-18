@@ -8,10 +8,7 @@ export function Footer({ onBook }: { onBook: () => void }) {
           <p className="mt-3 max-w-sm text-xs leading-relaxed text-muted-foreground">
             Rooms, rooftop dining, lounge and banquet spaces under one roof.
           </p>
-          <button
-            onClick={onBook}
-            className="mt-4 border border-gold px-5 py-2 text-[0.5rem] tracking-[0.3em] text-gold uppercase transition-colors hover:bg-gold hover:text-primary-foreground"
-          >
+          <button onClick={onBook} className="luxury-button luxury-button-hover mt-4 px-5 py-2">
             Book your stay
           </button>
         </div>
@@ -35,7 +32,9 @@ export function Footer({ onBook }: { onBook: () => void }) {
         </div>
 
         <div data-reveal>
-          <a href="/contact" className="eyebrow text-left transition-colors hover:text-gold">Contact</a>
+          <a href="/contact" className="eyebrow text-left transition-colors hover:text-gold">
+            Contact
+          </a>
           <ul className="mt-3 flex flex-col gap-1.5 text-xs text-muted-foreground">
             <li>Katpadi Road, Vellore 632004</li>
             <li>
