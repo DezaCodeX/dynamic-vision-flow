@@ -93,10 +93,16 @@
     line-height: 1.6;
   }
 
-  .bg-ink .text-cream,
+  .dark-surface .text-cream,
+  .bg-ink .text-cream {
+    color: var(--color-cream);
+  }
+
+  .dark-surface .eyebrow,
+  .dark-surface .text-muted-foreground,
   .bg-ink .eyebrow,
   .bg-ink .text-muted-foreground {
-    color: var(--background);
+    color: var(--color-ivory);
   }
 
   .readable-content p:not(.eyebrow),
@@ -164,6 +170,15 @@
   &:hover {
     background: var(--color-navy-soft);
     border-color: var(--gold);
+  }
+}
+
+@utility dark-surface {
+  color: var(--color-ivory);
+
+  .luxury-button-ghost {
+    border-color: color-mix(in oklab, var(--color-ivory) 58%, transparent);
+    color: var(--color-ivory);
   }
 }
 

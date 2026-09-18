@@ -23,7 +23,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
       className={`fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
         solid
           ? "glass-panel border-x-0 border-t-0 py-2"
-          : "border-transparent py-[clamp(0.75rem,2vw,1rem)]"
+          : "border-b border-border bg-background/95 py-[clamp(0.75rem,2vw,1rem)]"
       }`}
     >
       <nav className="flex w-full items-center justify-between px-[clamp(1rem,3vw,2rem)]">

@@ -67,7 +67,7 @@ export function Hero({
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pb-[clamp(3rem,8vh,7rem)] pt-[clamp(7rem,14vh,10rem)]"
+      className="dark-surface relative flex min-h-screen items-center overflow-hidden pb-[clamp(3rem,8vh,7rem)] pt-[clamp(7rem,14vh,10rem)]"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />

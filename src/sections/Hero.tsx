@@ -50,7 +50,7 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-32"
+      className="dark-surface relative flex min-h-screen items-center overflow-hidden pb-20 pt-32"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />

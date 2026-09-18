@@ -2,7 +2,7 @@ import { eventHalls, eventsImage } from "@/data/hotel";
 
 export function Events() {
   return (
-    <section id="celebrate" className="relative overflow-hidden py-28 lg:py-40">
+    <section id="celebrate" className="dark-surface relative overflow-hidden py-28 lg:py-40">
       <div className="absolute inset-0 -z-10">
         <img
           src={eventsImage}
