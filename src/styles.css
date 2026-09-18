@@ -136,6 +136,16 @@
   border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent);
 }
 
+.booking-bar input,
+.booking-bar select {
+  color-scheme: light;
+}
+
+.booking-bar input::placeholder {
+  color: var(--color-navy);
+  opacity: 0.72;
+}
+
 @utility luxury-button {
   border: 1px solid color-mix(in oklab, var(--gold) 72%, transparent);
   background: var(--color-navy);

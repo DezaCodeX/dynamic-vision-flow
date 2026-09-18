@@ -135,34 +135,44 @@ export function Hero({
             event.preventDefault();
             onBook(bookingDetails);
           }}
-          className="glass-panel mt-8 grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
+          className="booking-bar glass-panel mt-8 grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
         >
           <label className="block">
-            <span className="eyebrow">Check-in</span>
+            <span
+              className="eyebrow !text-[var(--color-navy)]"
+              style={{ color: "var(--color-navy)" }}
+            >
+              Check-in
+            </span>
             <input
               required
               type="date"
               value={bookingDetails.checkIn}
               onChange={(event) => updateBookingDetails("checkIn", event.target.value)}
-              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm !text-[var(--color-navy)] outline-none focus:border-gold"
             />
           </label>
           <label className="block">
-            <span className="eyebrow">Check-out</span>
+            <span
+              className="eyebrow !text-[var(--color-navy)]"
+              style={{ color: "var(--color-navy)" }}
+            >
+              Check-out
+            </span>
             <input
               required
               type="date"
               value={bookingDetails.checkOut}
               onChange={(event) => updateBookingDetails("checkOut", event.target.value)}
-              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm !text-[var(--color-navy)] outline-none focus:border-gold"
             />
           </label>
           <label className="block">
-            <span className="eyebrow">Guests</span>
+            <span className="eyebrow !text-[var(--color-navy)]">Guests</span>
             <select
               value={bookingDetails.guests}
               onChange={(event) => updateBookingDetails("guests", event.target.value)}
-              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm text-cream outline-none focus:border-gold"
+              className="mt-1 w-full border-b border-input bg-transparent pb-1 text-sm !text-[var(--color-navy)] outline-none focus:border-gold"
             >
               <option>1</option>
               <option>2</option>
