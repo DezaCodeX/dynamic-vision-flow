@@ -6,7 +6,11 @@ export function Cursor() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (
+      window.matchMedia("(pointer: coarse)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
     let x = 0;
     let y = 0;
     let cx = 0;
@@ -48,9 +52,7 @@ export function Cursor() {
           label ? "size-20 bg-gold/10" : "size-3 bg-gold/60"
         } flex items-center justify-center`}
       >
-        {label ? (
-          <span className="eyebrow text-[0.55rem] text-cream">{label}</span>
-        ) : null}
+        {label ? <span className="eyebrow text-[0.55rem] text-cream">{label}</span> : null}
       </div>
     </div>
   );

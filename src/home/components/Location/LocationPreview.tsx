@@ -15,7 +15,7 @@ export function LocationPreview() {
             href="https://maps.google.com/?q=Hotel+PNS+Nakshatra+Vellore"
             target="_blank"
             rel="noreferrer"
-            className="eyebrow mt-8 inline-block border-b border-gold pb-2 text-gold"
+            className="text-link mt-8"
           >
             Get directions
           </a>

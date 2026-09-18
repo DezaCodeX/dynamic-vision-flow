@@ -53,7 +53,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           <button
             onClick={onBook}
             data-cursor="Book"
-            className="luxury-button luxury-button-hover hidden px-6 py-3 lg:block"
+            className="luxury-button luxury-button-hover hidden px-5 py-2.5 lg:block"
           >
             Book your stay
           </button>
@@ -81,7 +81,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
               setOpen(false);
               onBook();
             }}
-            className="luxury-button luxury-button-hover px-5 py-3"
+            className="luxury-button luxury-button-hover px-5 py-2.5"
           >
             Book your stay
           </button>

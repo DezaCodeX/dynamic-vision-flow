@@ -45,7 +45,7 @@ export function GalleryPreview() {
         </div>
         <a
           href="#gallery"
-          className="eyebrow mt-6 inline-block border-b border-gold pb-2 text-gold"
+          className="text-link mt-6"
         >
           View full gallery
         </a>

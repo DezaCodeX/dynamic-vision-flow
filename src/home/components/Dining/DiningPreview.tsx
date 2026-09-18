@@ -35,7 +35,7 @@ export function DiningPreview() {
             </article>
           ))}
         </div>
-        <a href="#dine" className="eyebrow mt-10 inline-block border-b border-gold pb-2 text-gold">
+        <a href="#dine" className="text-link mt-10">
           Explore dining
         </a>
       </div>

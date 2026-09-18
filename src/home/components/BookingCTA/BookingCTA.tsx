@@ -21,7 +21,7 @@ export function BookingCTA({ onBook }: { onBook: () => void }) {
           </button>
           <a
             href="mailto:stay@pnsnakshatra.com"
-            className="luxury-button-ghost px-9 py-4 hover:bg-secondary"
+            className="luxury-button-ghost px-9 py-4"
           >
             Contact us
           </a>

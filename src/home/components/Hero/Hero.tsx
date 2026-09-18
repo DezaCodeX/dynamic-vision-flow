@@ -138,7 +138,7 @@ export function Hero({
             event.preventDefault();
             onBook(bookingDetails);
           }}
-          className="booking-bar glass-panel mt-8 grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
+          className="booking-bar glass-panel mt-8 grid w-full grid-cols-1 gap-4 rounded-md p-4 shadow-[0_16px_40px_-24px_rgba(41,56,99,0.55)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_46px_-24px_rgba(41,56,99,0.65)] focus-within:-translate-y-0.5 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
         >
           <label className="block">
             <span

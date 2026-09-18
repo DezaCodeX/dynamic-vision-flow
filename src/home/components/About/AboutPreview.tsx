@@ -25,7 +25,7 @@ export function AboutPreview() {
           {hotel.description} Every detail is designed to make arrival feel easy and the time after
           it feel entirely your own.
         </p>
-        <a href="#about" className="eyebrow mt-8 inline-block border-b border-gold pb-2 text-gold">
+        <a href="#about" className="text-link mt-8">
           Explore our story
         </a>
       </div>

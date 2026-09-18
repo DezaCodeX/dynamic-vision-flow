@@ -154,9 +154,10 @@
 }
 
 @utility luxury-button {
-  border: 1px solid color-mix(in oklab, var(--gold) 72%, transparent);
+  border: 1px solid color-mix(in oklab, var(--gold) 46%, var(--color-ivory));
   background: var(--color-navy);
   color: var(--color-ivory);
+  border-radius: 0.25rem;
   font-family: var(--font-sans);
   font-size: var(--type-button);
   font-weight: 700;
@@ -166,13 +167,16 @@
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
-    color 180ms ease;
+    color 180ms ease,
+    letter-spacing 180ms ease,
+    transform 180ms ease;
 }
 
 @utility luxury-button-ghost {
-  border: 1px solid color-mix(in oklab, var(--gold) 58%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-navy) 48%, transparent);
   background: transparent;
   color: var(--ink);
+  border-radius: 0.25rem;
   font-family: var(--font-sans);
   font-size: var(--type-button);
   font-weight: 700;
@@ -182,13 +186,56 @@
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
-    color 180ms ease;
+    color 180ms ease,
+    letter-spacing 180ms ease,
+    transform 180ms ease;
 }
 
 @utility luxury-button-hover {
   &:hover {
     background: var(--color-navy-soft);
-    border-color: var(--gold);
+    border-color: color-mix(in oklab, var(--gold) 58%, var(--color-ivory));
+    letter-spacing: 0.2em;
+    transform: translateY(-1px);
+  }
+}
+
+@utility text-link {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  padding-bottom: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: var(--type-label);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition:
+    color 180ms ease,
+    letter-spacing 180ms ease;
+
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: var(--gold);
+    content: "";
+    transform: scaleX(0.38);
+    transform-origin: left;
+    transition: transform 220ms ease;
+  }
+
+  &:hover {
+    color: var(--gold);
+    letter-spacing: 0.17em;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
   }
 }
 
@@ -197,6 +244,15 @@
 
   .luxury-button-ghost {
     border-color: color-mix(in oklab, var(--color-ivory) 58%, transparent);
+    color: var(--color-ivory);
+
+    &:hover {
+      background: color-mix(in oklab, var(--color-ivory) 12%, transparent);
+      border-color: var(--color-ivory);
+    }
+  }
+
+  .text-link {
     color: var(--color-ivory);
   }
 }

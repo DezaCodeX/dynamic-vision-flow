@@ -38,7 +38,7 @@ export function RoomsPreview() {
                 <span className="eyebrow">{room.size}</span>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{room.detail}</p>
-              <span className="eyebrow mt-5 inline-block text-gold">Explore room →</span>
+              <span className="text-link mt-5">Explore room →</span>
             </article>
           ))}
         </div>
