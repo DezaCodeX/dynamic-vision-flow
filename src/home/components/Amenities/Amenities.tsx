@@ -1,7 +1,7 @@
 import { facilities } from "@/home/data/homeData";
 export function Amenities() {
   return (
-    <section className="border-y border-border bg-card/35 px-6 py-24 lg:px-12 lg:py-32">
+    <section className="border-y border-border bg-[var(--color-surface-blue-soft)] px-6 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1400px]">
         <p className="eyebrow" data-home-reveal>
           04 — Facilities

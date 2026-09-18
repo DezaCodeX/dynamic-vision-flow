@@ -18,7 +18,7 @@ export function AboutPreview() {
             src={heroHotel}
             alt="Hotel PNS Nakshatra at night"
             loading="lazy"
-            className="aspect-[16/7] w-full object-cover"
+            className="aspect-[4/3] w-full object-cover"
           />
         </div>
         <p className="max-w-xl text-lg leading-relaxed text-muted-foreground">

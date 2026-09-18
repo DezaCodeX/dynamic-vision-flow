@@ -1,27 +1,31 @@
 :root {
   --color-navy: #293863;
   --color-navy-soft: #354873;
-  --color-ivory: #f6f2e9;
+  /* Muted blue-grey surfaces keep the page calm without losing the cool palette. */
+  --color-surface-cool: #d1dde1;
+  --color-surface-blue: #b9cbd5;
+  --color-surface-blue-soft: #c6d5db;
+  --color-ivory: #f3f8fa;
   --color-cream: #f6e2b4;
   --color-gold: #cf8c55;
   --color-text-primary: #293863;
   --color-text-secondary: #46536b;
   --color-border-warm: #2938632e;
   --ink: var(--color-text-primary);
-  --background: var(--color-ivory);
+  --background: var(--color-surface-cool);
   --foreground: var(--color-text-primary);
   --cream: var(--color-text-primary);
   --sand: #7c8491;
   --gold: var(--color-gold);
-  --card: #eadfce;
+  --card: var(--color-surface-blue-soft);
   --card-foreground: var(--color-text-primary);
-  --popover: #faf7f0;
+  --popover: #f3f8fa;
   --popover-foreground: var(--color-text-primary);
   --primary: var(--color-navy);
   --primary-foreground: var(--color-ivory);
-  --secondary: #e8dccb;
+  --secondary: #c3d2d9;
   --secondary-foreground: var(--color-text-primary);
-  --muted: #e5ddd1;
+  --muted: #c5d4db;
   --muted-foreground: var(--color-text-secondary);
   --accent: var(--color-gold);
   --accent-foreground: var(--color-navy);

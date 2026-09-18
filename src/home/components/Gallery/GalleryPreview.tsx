@@ -1,7 +1,7 @@
 import { gallery } from "@/home/data/homeData";
 export function GalleryPreview() {
   return (
-    <section id="gallery" className="bg-card/25 py-24 lg:py-32">
+    <section id="gallery" className="bg-[var(--color-surface-cool)] py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <p className="eyebrow" data-home-reveal>
           06 — Gallery

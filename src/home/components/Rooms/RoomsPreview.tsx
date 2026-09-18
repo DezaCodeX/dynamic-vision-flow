@@ -1,7 +1,7 @@
 import { featuredRooms } from "@/home/data/homeData";
 export function RoomsPreview() {
   return (
-    <section id="stay" className="bg-card/35 px-6 py-24 lg:px-12 lg:py-32">
+    <section id="stay" className="bg-[var(--color-surface-blue-soft)] px-6 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1400px]">
         <p className="eyebrow" data-home-reveal>
           02 — Stay
@@ -16,9 +16,13 @@ export function RoomsPreview() {
           Warm materials, calm proportions, and the quiet details that make a stay feel entirely
           your own.
         </p>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {featuredRooms.map((room) => (
-            <article key={room.id} className="group" data-home-reveal>
+        <div className="mt-12 grid gap-8 md:grid-cols-12">
+          {featuredRooms.map((room, index) => (
+            <article
+              key={room.id}
+              className={`group ${index === 0 ? "md:col-span-6" : "md:col-span-3"}`}
+              data-home-reveal
+            >
               <div className="overflow-hidden border border-gold/40">
                 <img
                   src={room.image}
@@ -26,7 +30,7 @@ export function RoomsPreview() {
                   loading="lazy"
                   width="1200"
                   height="800"
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  className={`${index === 0 ? "aspect-[4/3]" : "aspect-[3/4]"} w-full object-cover transition-transform duration-1000 group-hover:scale-105`}
                 />
               </div>
               <div className="flex items-baseline justify-between border-b border-gold/40 pt-5 pb-3">

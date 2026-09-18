@@ -1,7 +1,15 @@
+import roomSuite from "@/assets/room-suite.jpg";
+
 const moments = ["Arrival", "Stay", "Dining", "Celebration", "Departure"];
 export function Experience() {
   return (
     <section className="relative overflow-hidden bg-background py-24 lg:py-32">
+      <img
+        src={roomSuite}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-16 hidden h-[70%] w-[24%] object-cover opacity-15 lg:block"
+      />
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <p className="eyebrow" data-home-reveal>
           05 — Experience

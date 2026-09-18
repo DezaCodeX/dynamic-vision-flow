@@ -1,7 +1,7 @@
 import { diningExperiences } from "@/home/data/homeData";
 export function DiningPreview() {
   return (
-    <section id="dine" className="bg-background px-6 py-24 lg:px-12 lg:py-32">
+    <section id="dine" className="bg-[var(--color-surface-blue)] px-6 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto max-w-[1400px]">
         <p className="eyebrow" data-home-reveal>
           03 — Dine
@@ -12,9 +12,13 @@ export function DiningPreview() {
         >
           Good evenings begin <span className="italic text-gold">here.</span>
         </h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {diningExperiences.map((item) => (
-            <article key={item.id} data-home-reveal>
+        <div className="mt-12 grid gap-6 md:grid-cols-12">
+          {diningExperiences.map((item, index) => (
+            <article
+              key={item.id}
+              className={index === 0 ? "md:col-span-6" : "md:col-span-3"}
+              data-home-reveal
+            >
               <div className="overflow-hidden border border-gold/40">
                 <img
                   src={item.image}
@@ -22,7 +26,7 @@ export function DiningPreview() {
                   loading="lazy"
                   width="1400"
                   height="900"
-                  className="aspect-[4/3] w-full object-cover transition-transform duration-1000 hover:scale-105"
+                  className={`${index === 0 ? "aspect-[16/10]" : "aspect-[4/5]"} w-full object-cover transition-transform duration-1000 hover:scale-105`}
                 />
               </div>
               <p className="eyebrow mt-5">{item.tag}</p>
