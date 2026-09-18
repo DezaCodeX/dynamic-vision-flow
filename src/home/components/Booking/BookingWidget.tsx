@@ -37,7 +37,7 @@ export function BookingWidget({ onBook }: { onBook: (details: BookingDetails) =>
             type="date"
             value={details.checkIn}
             onChange={(event) => updateDetails("checkIn", event.target.value)}
-            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none focus:border-gold"
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none focus:border-gold"
           />
         </label>
         <label className="block">
@@ -47,7 +47,7 @@ export function BookingWidget({ onBook }: { onBook: (details: BookingDetails) =>
             type="date"
             value={details.checkOut}
             onChange={(event) => updateDetails("checkOut", event.target.value)}
-            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none focus:border-gold"
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none focus:border-gold"
           />
         </label>
         <label>
@@ -55,7 +55,7 @@ export function BookingWidget({ onBook }: { onBook: (details: BookingDetails) =>
           <select
             value={details.guests}
             onChange={(event) => updateDetails("guests", event.target.value)}
-            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none"
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none"
           >
             <option>1</option>
             <option>2</option>
@@ -68,7 +68,7 @@ export function BookingWidget({ onBook }: { onBook: (details: BookingDetails) =>
           <select
             value={details.rooms}
             onChange={(event) => updateDetails("rooms", event.target.value)}
-            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-sm text-cream outline-none"
+            className="mt-0.5 w-full border-b border-input bg-transparent pb-0.5 text-[length:var(--type-body-small)] text-cream outline-none"
           >
             <option>1</option>
             <option>2</option>

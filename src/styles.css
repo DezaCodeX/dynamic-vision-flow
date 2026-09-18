@@ -56,6 +56,10 @@
 
 :root {
   --radius: 0.25rem;
+  --type-body: clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);
+  --type-body-small: clamp(0.9375rem, 0.92rem + 0.08vw, 1rem);
+  --type-label: clamp(0.6875rem, 0.67rem + 0.08vw, 0.75rem);
+  --type-button: clamp(0.6875rem, 0.67rem + 0.08vw, 0.75rem);
 }
 
 @layer base {
@@ -107,12 +111,14 @@
 
   .readable-content p:not(.eyebrow),
   .readable-content li {
-    font-size: calc(1em + 2px);
+    font-size: var(--type-body);
+    line-height: 1.65;
   }
 
   .readable-content .site-footer p:not(.eyebrow),
   .readable-content .site-footer li {
-    font-size: 0.75rem;
+    font-size: var(--type-body-small);
+    line-height: 1.55;
   }
 
   :focus-visible {
@@ -123,9 +129,10 @@
 
 @utility eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: var(--type-label);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1.35;
   text-transform: uppercase;
   color: var(--ink);
 }
@@ -151,9 +158,10 @@
   background: var(--color-navy);
   color: var(--color-ivory);
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: var(--type-button);
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.18em;
+  line-height: 1.25;
   text-transform: uppercase;
   transition:
     background-color 180ms ease,
@@ -166,9 +174,10 @@
   background: transparent;
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: var(--type-button);
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.18em;
+  line-height: 1.25;
   text-transform: uppercase;
   transition:
     background-color 180ms ease,
