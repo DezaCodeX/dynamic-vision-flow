@@ -5,7 +5,7 @@ import logo from "@/assets/pns logo.png";
 const links = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
-  { label: "Rooms", href: "/#stay" },
+  { label: "Rooms", href: "/rooms" },
   { label: "Dining", href: "/#dine" },
   { label: "Gallery", href: "/#gallery" },
   { label: "Contact", href: "/contact" },

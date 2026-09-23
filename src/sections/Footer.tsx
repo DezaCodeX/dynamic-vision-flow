@@ -19,7 +19,7 @@ export function Footer({ onBook }: { onBook: () => void }) {
             {[
               ["Home", "/"],
               ["About Us", "/about-us"],
-              ["Rooms", "/#stay"],
+              ["Rooms", "/rooms"],
               ["Dining", "/#dine"],
               ["Gallery", "/#gallery"],
             ].map(([label, href]) => (
