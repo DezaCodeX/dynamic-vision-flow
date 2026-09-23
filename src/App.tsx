@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 import { Home } from "./home/Home";
+import { AboutUs } from "./pages/AboutUs";
 
 function NotFound() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact" element={<Home contactOpen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

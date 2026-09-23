@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import logo from "@/assets/pns logo.png";
 
 const links = [
-  { label: "Stay", href: "/#stay" },
-  { label: "Dine", href: "/#dine" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Rooms", href: "/#stay" },
+  { label: "Dining", href: "/#dine" },
+  { label: "Gallery", href: "/#gallery" },
   { label: "Contact", href: "/contact" },
-  { label: "Vellore", href: "/#vellore" },
 ];
 
 export function Navbar({ onBook }: { onBook: () => void }) {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 80);
@@ -40,7 +44,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="eyebrow text-[0.78rem] transition-colors hover:text-gold"
+                className={`eyebrow text-[0.78rem] transition-colors hover:text-gold ${location.pathname === l.href ? "text-gold" : ""}`}
                 data-cursor="View"
               >
                 {l.label}
@@ -72,7 +76,12 @@ export function Navbar({ onBook }: { onBook: () => void }) {
       {open ? (
         <div className="glass-panel mx-[clamp(1rem,4vw,1.5rem)] mt-3 flex flex-col gap-5 p-6 lg:hidden">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="eyebrow" onClick={() => setOpen(false)}>
+            <a
+              key={l.href}
+              href={l.href}
+              className={`eyebrow ${location.pathname === l.href ? "text-gold" : ""}`}
+              onClick={() => setOpen(false)}
+            >
               {l.label}
             </a>
           ))}

@@ -17,10 +17,11 @@ export function Footer({ onBook }: { onBook: () => void }) {
           <p className="eyebrow">Explore</p>
           <ul className="mt-3 flex flex-col gap-1.5 text-sm text-muted-foreground">
             {[
-              ["Stay", "/#stay"],
-              ["Dine", "/#dine"],
-              ["Celebrate", "/#celebrate"],
-              ["Vellore", "/#vellore"],
+              ["Home", "/"],
+              ["About Us", "/about-us"],
+              ["Rooms", "/#stay"],
+              ["Dining", "/#dine"],
+              ["Gallery", "/#gallery"],
             ].map(([label, href]) => (
               <li key={href}>
                 <a href={href} className="transition-colors hover:text-gold">
@@ -36,15 +37,15 @@ export function Footer({ onBook }: { onBook: () => void }) {
             Contact
           </a>
           <ul className="mt-3 flex flex-col gap-1.5 text-sm text-muted-foreground">
-            <li>Katpadi Road, Vellore 632004</li>
+            <li>No. 171, Arcot Main Road, Rangapuram, Vellore 632009</li>
             <li>
-              <a href="tel:+914162222222" className="hover:text-gold">
-                +91 416 222 2222
+              <a href="tel:+917598498603" className="hover:text-gold">
+                +91 75984 98603
               </a>
             </li>
             <li>
-              <a href="mailto:stay@pnsnakshatra.com" className="hover:text-gold">
-                stay@pnsnakshatra.com
+              <a href="mailto:fo@hotelpnsnakshatra.com" className="hover:text-gold">
+                fo@hotelpnsnakshatra.com
               </a>
             </li>
           </ul>
