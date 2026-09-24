@@ -288,29 +288,7 @@ export function Rooms() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[1400px] gap-10 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:px-12 lg:py-32">
-          <div>
-            <p className="eyebrow text-gold">Get in touch</p>
-            <h2 className="mt-4 font-display text-6xl leading-none text-ink">
-              Meet us
-              <br />
-              <span className="italic text-gold">in Vellore.</span>
-            </h2>
-            <a
-              href="https://maps.app.goo.gl/MhVVYxgfvEiwWW6d8"
-              target="_blank"
-              rel="noreferrer"
-              className="text-link mt-8"
-            >
-              Get directions <ArrowUpRight className="ml-2 size-4" />
-            </a>
-          </div>
-          <div className="grid gap-7 text-sm text-muted-foreground sm:grid-cols-2">
-           
-        
-          </div>
-        </section>
-        <Footer onBook={() => openBooking()} />
+               <Footer onBook={() => openBooking()} />
       </main>
       <BookingPanel open={booking} details={bookingDetails} onClose={() => setBooking(false)} />
     </div>
