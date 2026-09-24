@@ -267,7 +267,7 @@ export function Rooms() {
         <section className="dark-surface bg-ink px-6 py-28 lg:px-12 lg:py-40">
           <div className="mx-auto max-w-[1100px] text-center">
             <p className="eyebrow text-gold">Your stay, your space</p>
-            <h2 className="mt-5 font-display text-[clamp(3rem,8vw,8rem)] leading-[0.84] text-cream">
+            <h2 className="mt-5 font-display text-[clamp(3rem,8vw,8rem)] leading-[0.84] text-white">
               Choose how you <span className="italic text-gold">stay.</span>
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-cream/75">
