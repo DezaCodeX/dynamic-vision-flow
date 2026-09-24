@@ -13,7 +13,7 @@ const navigation = [
 export function Footer({ onBook }: { onBook: () => void }) {
   return (
     <footer
-      className="site-footer border-t border-[#B98A50]/30 bg-[#293863] text-[#F3F0E8]"
+      className="site-footer border-t border-[#B98A50]/30 bg-[#CFDCDF] text-[#293863]"
       style={{
         backgroundColor: "#293863",
       }}
