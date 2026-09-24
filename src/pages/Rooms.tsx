@@ -166,7 +166,7 @@ export function Rooms() {
           <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-12">
             <div className="relative z-10">
               <p className="eyebrow text-gold">Our accommodations</p>
-              <h1 className="mt-5 font-display text-[clamp(4rem,10vw,10rem)] leading-[0.8] text-cream">
+              <h1 className="mt-5 font-display text-[clamp(4rem,10vw,10rem)] leading-[0.8] text-white">
                 Stay
                 <br />
                 <span className="italic text-gold">with us.</span>
