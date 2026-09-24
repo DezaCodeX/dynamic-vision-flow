@@ -307,36 +307,7 @@ export function Rooms() {
           </div>
           <div className="grid gap-7 text-sm text-muted-foreground sm:grid-cols-2">
            
-            <div className="space-y-3">
-              <p className="eyebrow text-ink">Reservations</p>
-              <a href="tel:04162266111" className="flex items-center gap-2 hover:text-gold">
-                <Phone className="size-4 text-gold" />
-                0416 2266111 / 0416 2266222
-              </a>
-              <a href="tel:+917598498603" className="flex items-center gap-2 hover:text-gold">
-                <Phone className="size-4 text-gold" />
-                +91 75984 98603
-              </a>
-              <a href="mailto:fo@hotelpnsnakshatra.com" className="block hover:text-gold">
-                fo@hotelpnsnakshatra.com
-              </a>
-              <p className="pt-3 leading-relaxed">
-                CLINQ - Bar: +91 75984 98605
-                <br />
-                Vrindavan Veg Restaurant: +91 75984 98605
-                <br />
-                Cloud 9 - Rooftop Restaurant: +91 75984 98602
-              </p>
-              <a
-                href="https://maps.app.goo.gl/MhVVYxgfvEiwWW6d8"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 pt-2 hover:text-gold"
-              >
-                <MapPin className="size-4 text-gold" />
-                Get directions
-              </a>
-            </div>
+        
           </div>
         </section>
         <Footer onBook={() => openBooking()} />
