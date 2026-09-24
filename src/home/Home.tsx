@@ -56,7 +56,7 @@ export function Home({ contactOpen = false }: { contactOpen?: boolean }) {
       <main ref={root} className="readable-content relative">
         <Hero onBook={openBooking} />
         <AboutPreview />
-        <RoomsPreview />
+        <RoomsPreview onBook={openBooking} />
         <DiningPreview />
         <Amenities />
         <Experience />

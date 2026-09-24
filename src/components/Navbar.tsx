@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import logo from "@/assets/pns logo.png";
 
 const links = [
-  { label: "Stay", href: "/#stay" },
-  { label: "Dine", href: "/#dine" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Rooms", href: "/rooms" },
+  { label: "Dining", href: "/dining" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
-  { label: "Vellore", href: "/#vellore" },
 ];
 
 export function Navbar({ onBook }: { onBook: () => void }) {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 80);
@@ -38,13 +42,31 @@ export function Navbar({ onBook }: { onBook: () => void }) {
         <ul className="hidden items-center gap-[clamp(1.25rem,3vw,2.5rem)] lg:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
-                className="eyebrow text-[0.78rem] transition-colors hover:text-gold"
-                data-cursor="View"
-              >
-                {l.label}
-              </a>
+              <div className="group relative">
+                <a
+                  href={l.href}
+                  className={`eyebrow text-[0.78rem] transition-colors hover:text-gold ${location.pathname === l.href ? "text-gold" : ""}`}
+                  data-cursor="View"
+                >
+                  {l.label}
+                </a>
+                {l.label === "Dining" ? (
+                  <div className="pointer-events-none absolute left-1/2 top-full z-20 mt-4 w-52 -translate-x-1/2 translate-y-2 border border-gold/40 bg-[var(--color-navy)] p-3 opacity-0 shadow-[var(--shadow-cinema)] transition-all group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+                    {["vrindavan", "cloud-9", "clinq"].map((section) => (
+                      <a
+                        key={section}
+                        href={`/dining#${section}`}
+                        className="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-ivory)] transition-colors hover:bg-[color-mix(in_oklab,var(--color-ivory)_10%,transparent)] hover:text-gold"
+                      >
+                        <span className="block">{section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}</span>
+                        <span className="mt-1 block text-[0.6rem] font-normal tracking-[0.08em] text-[var(--color-ivory)]/70">
+                          {section === "vrindavan" ? "Veg fine dining" : section === "cloud-9" ? "Rooftop restaurant" : "Casual bar & lounge"}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </li>
           ))}
         </ul>
@@ -72,10 +94,25 @@ export function Navbar({ onBook }: { onBook: () => void }) {
       {open ? (
         <div className="glass-panel mx-[clamp(1rem,4vw,1.5rem)] mt-3 flex flex-col gap-5 p-6 lg:hidden">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="eyebrow" onClick={() => setOpen(false)}>
+            <a
+              key={l.href}
+              href={l.href}
+              className={`eyebrow ${location.pathname === l.href ? "text-gold" : ""}`}
+              onClick={() => setOpen(false)}
+            >
               {l.label}
             </a>
           ))}
+          <div className="border-t border-gold/20 pt-4">
+            <p className="eyebrow text-gold">Dining</p>
+            <div className="mt-2 grid grid-cols-3 gap-2">
+              {["vrindavan", "cloud-9", "clinq"].map((section) => (
+                <a key={section} href={`/dining#${section}`} onClick={() => setOpen(false)} className="eyebrow text-[var(--color-ivory)]/80 hover:text-gold">
+                  {section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}
+                </a>
+              ))}
+            </div>
+          </div>
           <button
             onClick={() => {
               setOpen(false);

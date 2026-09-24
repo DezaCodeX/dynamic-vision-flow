@@ -44,7 +44,7 @@ export function GalleryPreview() {
           ))}
         </div>
         <a
-          href="#gallery"
+          href="/gallery"
           className="text-link mt-6"
         >
           View full gallery
