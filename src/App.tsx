@@ -4,6 +4,8 @@ import { Home } from "./home/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { Rooms } from "./pages/Rooms";
 import { Dining } from "./pages/Dining";
+import { Gallery } from "./pages/Gallery";
+import { Legal } from "./pages/Legal";
 
 function NotFound() {
   return (
@@ -30,6 +32,10 @@ export default function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/dining" element={<Dining />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/privacy-policy" element={<Legal path="/privacy-policy" />} />
+        <Route path="/terms-and-conditions" element={<Legal path="/terms-and-conditions" />} />
+        <Route path="/refund-cancellation-policy" element={<Legal path="/refund-cancellation-policy" />} />
         <Route path="/contact" element={<Home contactOpen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

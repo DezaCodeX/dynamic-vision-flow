@@ -67,7 +67,7 @@ export function Hero({
           <div className="relative z-10 pb-4 lg:pb-16">
             <p className="eyebrow mt-10 font-bold text-gold">A new constellation in Vellore</p>
             <h1 className="mt-5 max-w-2xl font-display text-[clamp(2.9rem,8vw,8.4rem)] leading-[0.82] tracking-[-0.025em] text-cream">
-              <span className="block overflow-hidden"><span data-hero-line className="block">Stay above</span></span>
+              <span className="block overflow-hidden"><span data-hero-line className="block text-[var(--color-ivory)]">Stay above</span></span>
               <span className="block overflow-visible pb-[0.12em]"><span data-hero-line className="block italic text-gold">the ordinary.</span></span>
             </h1>
             <p data-hero-fade className="eyebrow mt-8 text-cream">PNS Nakshatra · Vellore, Tamil Nadu</p>

@@ -47,31 +47,32 @@ function SpatialGallery({ experience }: { experience: DiningExperience }) {
 }
 
 function ExperienceSection({ experience, index, onBook }: { experience: DiningExperience; index: number; onBook: () => void }) {
+  const lightSurface = index === 1;
   return (
-    <section id={experience.id} className={`dining-experience dining-experience-${experience.tone} relative overflow-hidden px-6 py-24 lg:px-12 lg:py-36`}>
+    <section id={experience.id} className={`dining-experience dining-experience-${experience.tone} ${lightSurface ? "dining-experience-light" : ""} relative overflow-hidden px-6 py-24 lg:px-12 lg:py-36`}>
       <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
         <div className={index % 2 ? "lg:order-2" : ""}>
           <p className="eyebrow text-gold">0{index + 1} — {experience.category}</p>
-          <h2 className="mt-5 max-w-3xl font-display text-[clamp(3rem,7vw,7rem)] leading-[0.84] text-cream">
+          <h2 className={`mt-5 max-w-3xl font-display text-[clamp(3rem,7vw,7rem)] leading-[0.84] ${lightSurface ? "text-ink" : "text-[var(--color-ivory)]"}`}>
             {experience.name}
           </h2>
           <h3 className="mt-6 max-w-2xl font-display text-3xl leading-none text-gold lg:text-4xl">
             {experience.heading}
           </h3>
-          <p className="mt-7 max-w-xl text-base leading-relaxed text-[var(--color-ivory)]/85">
+          <p className={`mt-7 max-w-xl text-base leading-relaxed ${lightSurface ? "text-ink/85" : "text-[var(--color-ivory)]/85"}`}>
             {experience.description}
           </p>
-          <ul className="mt-7 grid max-w-xl gap-3 border-y border-gold/30 py-5 text-sm text-[var(--color-ivory)]/85 sm:grid-cols-2">
+          <ul className={`mt-7 grid max-w-xl gap-3 border-y border-gold/30 py-5 text-sm sm:grid-cols-2 ${lightSurface ? "text-ink/85" : "text-[var(--color-ivory)]/85"}`}>
             {experience.features.map((feature) => <li key={feature} className="border-l border-gold/50 pl-3">{feature}</li>)}
           </ul>
           <div className="mt-7 flex flex-wrap items-center gap-4">
             {experience.menuLinks.map((link) => (
-              <a key={link.href} href={link.href} className="luxury-button-ghost px-5 py-3 text-cream">{link.label}</a>
+              <a key={link.href} href={link.href} className={`luxury-button-ghost px-5 py-3 ${lightSurface ? "text-ink" : "editorial-panel-button"}`}>{link.label}</a>
             ))}
             <a href={experience.phoneHref} className="luxury-button luxury-button-hover inline-flex items-center gap-2 px-5 py-3"><Phone className="size-4" />Call {experience.name}</a>
-            <button onClick={onBook} className="text-link text-cream">Reserve now <ArrowUpRight className="ml-2 size-4" /></button>
+            <button onClick={onBook} className={`text-link ${lightSurface ? "text-ink" : "text-[var(--color-ivory)]"}`}>Reserve now <ArrowUpRight className="ml-2 size-4" /></button>
           </div>
-          <p className="eyebrow mt-5 text-cream/70">{experience.phone}</p>
+          <p className={`eyebrow mt-5 ${lightSurface ? "text-ink/70" : "text-[var(--color-ivory)]/70"}`}>{experience.phone}</p>
         </div>
         <div className={index % 2 ? "lg:order-1" : ""}>
           <SpatialGallery experience={experience} />
@@ -111,11 +112,11 @@ export function Dining() {
           <div className="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="relative z-10">
               <p className="eyebrow text-gold">Dining at Nakshatra</p>
-              <h1 className="mt-5 max-w-3xl font-display text-[clamp(4rem,10vw,10rem)] leading-[0.78] text-cream">Good evenings <span className="italic text-gold">begin here.</span></h1>
+              <h1 className="mt-5 max-w-3xl font-display text-[clamp(4rem,10vw,10rem)] leading-[0.78] text-[var(--color-ivory)]">Good evenings <span className="italic text-gold">begin here.</span></h1>
               <p className="mt-8 max-w-lg text-base leading-relaxed text-[var(--color-ivory)]/85">Discover three distinctive dining experiences, each with its own atmosphere, character and culinary identity.</p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a href="#vrindavan" className="luxury-button luxury-button-hover inline-flex items-center gap-2 px-6 py-3">Explore dining <ArrowDownRight className="size-4" /></a>
-                <button onClick={() => openBooking()} className="luxury-button-ghost px-6 py-3 text-cream">Reserve now</button>
+                <button onClick={() => openBooking()} className="luxury-button-ghost editorial-panel-button px-6 py-3">Reserve now</button>
               </div>
             </div>
             <div className="relative z-10 hidden lg:block">
@@ -124,7 +125,7 @@ export function Dining() {
           </div>
           <div className="relative z-10 mx-auto mt-16 flex max-w-[1400px] flex-wrap gap-5 border-t border-gold/30 pt-5">
             {diningExperiences.map((experience) => (
-              <a key={experience.id} href={`#${experience.id}`} className={`eyebrow transition-colors ${selectedId === experience.id ? "text-gold" : "text-cream/70 hover:text-gold"}`}>0{diningExperiences.indexOf(experience) + 1} {experience.name}</a>
+              <a key={experience.id} href={`#${experience.id}`} className={`eyebrow transition-colors ${selectedId === experience.id ? "text-gold" : "text-[var(--color-ivory)]/70 hover:text-gold"}`}>0{diningExperiences.indexOf(experience) + 1} {experience.name}</a>
             ))}
           </div>
         </section>

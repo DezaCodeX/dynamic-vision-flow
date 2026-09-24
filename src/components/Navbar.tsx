@@ -7,7 +7,7 @@ const links = [
   { label: "About Us", href: "/about-us" },
   { label: "Rooms", href: "/rooms" },
   { label: "Dining", href: "/dining" },
-  { label: "Gallery", href: "/#gallery" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -51,14 +51,17 @@ export function Navbar({ onBook }: { onBook: () => void }) {
                   {l.label}
                 </a>
                 {l.label === "Dining" ? (
-                  <div className="pointer-events-none absolute left-1/2 top-full z-20 mt-4 w-44 -translate-x-1/2 translate-y-2 border border-gold/30 bg-ink/95 p-3 opacity-0 shadow-[var(--shadow-cinema)] transition-all group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="pointer-events-none absolute left-1/2 top-full z-20 mt-4 w-52 -translate-x-1/2 translate-y-2 border border-gold/40 bg-[var(--color-navy)] p-3 opacity-0 shadow-[var(--shadow-cinema)] transition-all group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
                     {["vrindavan", "cloud-9", "clinq"].map((section) => (
                       <a
                         key={section}
                         href={`/dining#${section}`}
-                        className="eyebrow block px-3 py-2 text-cream transition-colors hover:bg-cream/10 hover:text-gold"
+                        className="block px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-ivory)] transition-colors hover:bg-[color-mix(in_oklab,var(--color-ivory)_10%,transparent)] hover:text-gold"
                       >
-                        {section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}
+                        <span className="block">{section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}</span>
+                        <span className="mt-1 block text-[0.6rem] font-normal tracking-[0.08em] text-[var(--color-ivory)]/70">
+                          {section === "vrindavan" ? "Veg fine dining" : section === "cloud-9" ? "Rooftop restaurant" : "Casual bar & lounge"}
+                        </span>
                       </a>
                     ))}
                   </div>
@@ -104,7 +107,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             <p className="eyebrow text-gold">Dining</p>
             <div className="mt-2 grid grid-cols-3 gap-2">
               {["vrindavan", "cloud-9", "clinq"].map((section) => (
-                <a key={section} href={`/dining#${section}`} onClick={() => setOpen(false)} className="eyebrow text-cream/80 hover:text-gold">
+                <a key={section} href={`/dining#${section}`} onClick={() => setOpen(false)} className="eyebrow text-[var(--color-ivory)]/80 hover:text-gold">
                   {section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}
                 </a>
               ))}

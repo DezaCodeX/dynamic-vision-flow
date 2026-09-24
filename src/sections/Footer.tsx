@@ -6,22 +6,22 @@ const navigation = [
   ["About Us", "/about-us"],
   ["Rooms", "/rooms"],
   ["Dining", "/dining"],
-  ["Gallery", "/#gallery"],
+  ["Gallery", "/gallery"],
   ["Contact", "/contact"],
 ] as const;
 
 export function Footer({ onBook }: { onBook: () => void }) {
   return (
     <footer className="site-footer dark-surface border-t border-gold/30 bg-ink text-[var(--color-ivory)]">
-      <div className="mx-auto grid max-w-[1400px] gap-8 px-6 py-10 lg:grid-cols-[1.35fr_0.7fr_1fr_0.7fr] lg:px-12 lg:py-12">
+      <div className="mx-auto grid max-w-[1400px] gap-6 px-6 py-7 lg:grid-cols-[1.35fr_0.7fr_1fr_0.7fr] lg:gap-7 lg:px-12 lg:py-8">
         <div>
           <a href="/" className="inline-block" aria-label="Hotel PNS Nakshatra home">
             <img src={logo} alt="Hotel PNS Nakshatra" className="h-14 w-auto object-contain" />
           </a>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--color-ivory)]/85">
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-[var(--color-ivory)]/85">
             Hotel PNS Nakshatra is a symbol of elegance and sophistication, a contemporary 3-star luxury hotel situated in the vibrant city of Vellore. Established with a vision to provide an unparalleled hospitality experience, our journey began with a dream to create a haven of comfort and luxury for travelers.
           </p>
-          <button onClick={onBook} className="luxury-button luxury-button-hover mt-5 px-5 py-2.5">
+          <button onClick={onBook} className="luxury-button luxury-button-hover mt-4 px-5 py-2">
             Book your stay
           </button>
         </div>
@@ -61,7 +61,7 @@ export function Footer({ onBook }: { onBook: () => void }) {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-3 border-t border-gold/20 px-6 py-4 text-[0.65rem] uppercase tracking-[0.14em] text-[var(--color-ivory)]/70 sm:flex-row sm:items-center sm:justify-between lg:px-12">
+      <div className="mx-auto flex max-w-[1400px] flex-col gap-2 border-t border-gold/20 px-6 py-3 text-[0.65rem] uppercase tracking-[0.14em] text-[var(--color-ivory)]/70 sm:flex-row sm:items-center sm:justify-between lg:px-12">
         <span>© {new Date().getFullYear()} Hotel PNS Nakshatra</span>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           <a href="/privacy-policy" className="hover:text-gold">Privacy policy</a>
