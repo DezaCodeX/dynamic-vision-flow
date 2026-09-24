@@ -18,9 +18,7 @@ export function Footer({ onBook }: { onBook: () => void }) {
           <a href="/" className="inline-block" aria-label="Hotel PNS Nakshatra home">
             <img src={logo} alt="Hotel PNS Nakshatra" className="h-10 w-auto object-contain" />
           </a>
-          <p className="mt-2 max-w-md text-sm leading-[1.35] text-[var(--color-ivory)]/85">
-            Hotel PNS Nakshatra is a symbol of elegance and sophistication, a contemporary 3-star luxury hotel situated in the vibrant city of Vellore. Established with a vision to provide an unparalleled hospitality experience, our journey began with a dream to create a haven of comfort and luxury for travelers.
-          </p>
+        
           <button onClick={onBook} className="luxury-button luxury-button-hover mt-3 px-5 py-2">
             Book your stay
           </button>
