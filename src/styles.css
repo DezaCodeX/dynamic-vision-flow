@@ -99,14 +99,14 @@
 
   .dark-surface .text-cream,
   .bg-ink .text-cream {
-    color: var(--color-cream) !important;
+    color: var(--color-cream);
   }
 
   .dark-surface .eyebrow,
   .dark-surface .text-muted-foreground,
   .bg-ink .eyebrow,
   .bg-ink .text-muted-foreground {
-    color: var(--color-ivory) !important;
+    color: var(--color-ivory);
   }
 
   .readable-content p:not(.eyebrow),
@@ -145,12 +145,17 @@
 
 .booking-bar input,
 .booking-bar select {
+  color: var(--color-navy);
   color-scheme: light;
 }
 
 .booking-bar input::placeholder {
   color: var(--color-navy);
   opacity: 0.72;
+}
+
+.booking-bar .eyebrow {
+  color: var(--color-navy);
 }
 
 @utility luxury-button {

@@ -14,7 +14,13 @@ const initialBookingDetails: BookingDetails = {
   guests: "1",
 };
 
-export function BookingWidget({ onBook }: { onBook: (details: BookingDetails) => void }) {
+export function BookingWidget({
+  onBook,
+  showHeading = false,
+}: {
+  onBook: (details: BookingDetails) => void;
+  showHeading?: boolean;
+}) {
   const [details, setDetails] = useState(initialBookingDetails);
 
   const updateDetails = (field: keyof BookingDetails, value: string) => {
@@ -27,8 +33,14 @@ export function BookingWidget({ onBook }: { onBook: (details: BookingDetails) =>
         event.preventDefault();
         onBook(details);
       }}
-      className="booking-bar glass-panel grid w-full grid-cols-1 gap-4 rounded-md p-4 shadow-[0_16px_40px_-24px_rgba(41,56,99,0.55)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_46px_-24px_rgba(41,56,99,0.65)] focus-within:-translate-y-0.5 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
+      aria-label={showHeading ? "Book your stay" : undefined}
+      className="booking-bar glass-panel relative z-20 grid w-full grid-cols-1 gap-4 rounded-md p-4 shadow-[0_16px_40px_-24px_rgba(41,56,99,0.55)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_46px_-24px_rgba(41,56,99,0.65)] focus-within:-translate-y-0.5 md:grid-cols-[1fr_1fr_0.75fr_auto] md:items-end"
     >
+      {showHeading && (
+        <h2 className="booking-bar-heading col-span-2 w-full font-display text-3xl leading-none text-ink md:col-span-4 md:text-4xl">
+          Book your stay
+        </h2>
+      )}
       <label className="block">
         <span className="eyebrow">Check-in</span>
         <input

@@ -186,7 +186,7 @@ export function Rooms() {
             </div>
           </div>
           <div className="relative z-10 mx-auto mt-8 max-w-[1240px] px-4 lg:px-10">
-            <BookingWidget onBook={openBooking} />
+            <BookingWidget onBook={openBooking} showHeading />
           </div>
         </section>
 
