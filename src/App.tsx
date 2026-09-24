@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { Home } from "./home/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { Rooms } from "./pages/Rooms";
+import { Dining } from "./pages/Dining";
 
 function NotFound() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/rooms" element={<Rooms />} />
+        <Route path="/dining" element={<Dining />} />
         <Route path="/contact" element={<Home contactOpen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

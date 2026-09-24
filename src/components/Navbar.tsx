@@ -6,7 +6,7 @@ const links = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
   { label: "Rooms", href: "/rooms" },
-  { label: "Dining", href: "/#dine" },
+  { label: "Dining", href: "/dining" },
   { label: "Gallery", href: "/#gallery" },
   { label: "Contact", href: "/contact" },
 ];
@@ -42,13 +42,28 @@ export function Navbar({ onBook }: { onBook: () => void }) {
         <ul className="hidden items-center gap-[clamp(1.25rem,3vw,2.5rem)] lg:flex">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
-                className={`eyebrow text-[0.78rem] transition-colors hover:text-gold ${location.pathname === l.href ? "text-gold" : ""}`}
-                data-cursor="View"
-              >
-                {l.label}
-              </a>
+              <div className="group relative">
+                <a
+                  href={l.href}
+                  className={`eyebrow text-[0.78rem] transition-colors hover:text-gold ${location.pathname === l.href ? "text-gold" : ""}`}
+                  data-cursor="View"
+                >
+                  {l.label}
+                </a>
+                {l.label === "Dining" ? (
+                  <div className="pointer-events-none absolute left-1/2 top-full z-20 mt-4 w-44 -translate-x-1/2 translate-y-2 border border-gold/30 bg-ink/95 p-3 opacity-0 shadow-[var(--shadow-cinema)] transition-all group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+                    {["vrindavan", "cloud-9", "clinq"].map((section) => (
+                      <a
+                        key={section}
+                        href={`/dining#${section}`}
+                        className="eyebrow block px-3 py-2 text-cream transition-colors hover:bg-cream/10 hover:text-gold"
+                      >
+                        {section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </li>
           ))}
         </ul>
@@ -85,6 +100,16 @@ export function Navbar({ onBook }: { onBook: () => void }) {
               {l.label}
             </a>
           ))}
+          <div className="border-t border-gold/20 pt-4">
+            <p className="eyebrow text-gold">Dining</p>
+            <div className="mt-2 grid grid-cols-3 gap-2">
+              {["vrindavan", "cloud-9", "clinq"].map((section) => (
+                <a key={section} href={`/dining#${section}`} onClick={() => setOpen(false)} className="eyebrow text-cream/80 hover:text-gold">
+                  {section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}
+                </a>
+              ))}
+            </div>
+          </div>
           <button
             onClick={() => {
               setOpen(false);
