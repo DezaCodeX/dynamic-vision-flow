@@ -158,6 +158,69 @@
   color: var(--color-navy);
 }
 
+.editorial-carousel {
+  transform-style: preserve-3d;
+}
+
+.editorial-carousel-item {
+  --panel-depth: -32px;
+  --panel-rotate-x: 0deg;
+  --panel-rotate-y: 0deg;
+  transform: translate3d(0, 0, var(--panel-depth)) rotateX(var(--panel-rotate-x))
+    rotateY(var(--panel-rotate-y));
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms ease,
+    opacity 900ms ease;
+  will-change: transform;
+}
+
+.editorial-carousel-item-active {
+  --panel-depth: 0px;
+  z-index: 2;
+}
+
+.editorial-panel-copy,
+.editorial-panel-copy.eyebrow {
+  color: var(--color-ivory);
+}
+
+.editorial-panel-button {
+  border-color: color-mix(in oklab, var(--color-ivory) 72%, transparent);
+  color: var(--color-ivory);
+}
+
+.editorial-carousel-item:not(.editorial-carousel-item-active) {
+  filter: saturate(0.82);
+}
+
+.editorial-carousel-item:not(.editorial-carousel-item-active):hover,
+.editorial-carousel-item:not(.editorial-carousel-item-active):focus-within {
+  --panel-depth: -4px;
+  filter: saturate(1);
+}
+
+@media (max-width: 767px) {
+  .editorial-carousel-item {
+    min-height: 22rem;
+    transform: none;
+  }
+
+  .editorial-carousel-item-active {
+    min-height: 30rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-carousel-item,
+  .editorial-carousel-item img,
+  .editorial-carousel-copy {
+    transition-duration: 0.01ms;
+  }
+}
+
 @utility luxury-button {
   border: 1px solid color-mix(in oklab, var(--gold) 46%, var(--color-ivory));
   background: var(--color-navy);
