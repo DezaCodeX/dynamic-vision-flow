@@ -132,12 +132,6 @@ export function Dining() {
 
         {diningExperiences.map((experience, index) => <ExperienceSection key={experience.id} experience={experience} index={index} onBook={() => openBooking()} />)}
 
-        <section className="dark-surface bg-ink px-6 py-20 lg:px-12 lg:py-28">
-          <div className="mx-auto flex max-w-[1100px] flex-col items-start justify-between gap-8 border-y border-gold/30 py-8 sm:flex-row sm:items-center">
-            <div><p className="eyebrow text-gold">Your table awaits</p><h2 className="mt-3 font-display text-5xl text-cream lg:text-7xl">Make it an <span className="italic text-gold">evening.</span></h2></div>
-            <button onClick={() => openBooking()} className="luxury-button luxury-button-hover px-6 py-4">Reserve now</button>
-          </div>
-        </section>
       </main>
       <Footer onBook={() => openBooking()} />
       <BookingPanel open={booking} details={bookingDetails} onClose={() => setBooking(false)} />

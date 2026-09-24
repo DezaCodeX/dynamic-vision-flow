@@ -77,19 +77,19 @@ function RoomStage({ rooms, activeIndex }: { rooms: Room[]; activeIndex: number 
 function RoomCard({ room, index, onBook }: { room: Room; index: number; onBook: () => void }) {
   return (
     <article
-      className="flex min-h-[31rem] flex-col justify-center border-t border-gold/40 py-16 lg:min-h-[42rem] lg:py-24"
+      className="flex min-h-[31rem] flex-col justify-center border-t border-gold/40 py-16 text-[var(--color-ivory)] lg:min-h-[42rem] lg:py-24"
       data-room-index={index}
     >
       <p className="eyebrow text-gold">
         0{index + 1} / 05 · {room.category}
       </p>
-      <h3 className="mt-4 font-display text-[clamp(3.2rem,7vw,7rem)] leading-[0.86] text-cream">
+      <h3 className="mt-4 font-display text-[clamp(3.2rem,7vw,7rem)] leading-[0.86] text-[var(--color-ivory)]">
         {room.name}
       </h3>
-      <p className="mt-7 max-w-lg text-base leading-relaxed text-muted-foreground">
+      <p className="mt-7 max-w-lg text-base leading-relaxed text-[var(--color-ivory)]/80">
         {room.description}
       </p>
-      <ul className="mt-8 grid max-w-lg gap-x-8 gap-y-3 border-y border-gold/30 py-5 text-sm text-cream sm:grid-cols-2">
+      <ul className="mt-8 grid max-w-lg gap-x-8 gap-y-3 border-y border-gold/30 py-5 text-sm text-[var(--color-ivory)]/85 sm:grid-cols-2">
         {room.amenities.map((amenity) => (
           <li key={amenity} className="flex gap-2">
             <Check className="mt-1 size-3.5 shrink-0 text-gold" />
@@ -99,8 +99,8 @@ function RoomCard({ room, index, onBook }: { room: Room; index: number; onBook: 
       </ul>
       <div className="mt-7 flex flex-wrap items-end justify-between gap-5">
         <div>
-          <p className="eyebrow">From {room.price} / night</p>
-          <p className="mt-1 text-xs text-muted-foreground">{room.tax}</p>
+          <p className="eyebrow text-[var(--color-ivory)]/85">From {room.price} / night</p>
+          <p className="mt-1 text-xs text-[var(--color-ivory)]/70">{room.tax}</p>
         </div>
         <div className="flex flex-wrap gap-4">
           <a

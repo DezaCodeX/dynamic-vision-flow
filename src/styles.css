@@ -104,9 +104,21 @@
 
   .dark-surface .eyebrow,
   .dark-surface .text-muted-foreground,
+  .dark-surface .text-ink,
+  .dark-surface p,
+  .dark-surface li,
+  .dark-surface span,
+  .dark-surface td,
+  .dark-surface th,
   .bg-ink .eyebrow,
-  .bg-ink .text-muted-foreground {
+  .bg-ink .text-muted-foreground,
+  .bg-ink .text-ink {
     color: var(--color-ivory);
+  }
+
+  .dark-surface .text-muted-foreground,
+  .bg-ink .text-muted-foreground {
+    opacity: 0.82;
   }
 
   .readable-content p:not(.eyebrow),
@@ -264,7 +276,9 @@
 
 .review-carousel {
   position: relative;
-  min-height: 22rem;
+  min-height: 23rem;
+  max-width: 42rem;
+  margin-left: auto;
   perspective: 1200px;
   transform-style: preserve-3d;
 }
@@ -275,13 +289,13 @@
   --review-rotate-y: 0deg;
   position: absolute;
   inset: 0 auto auto 0;
-  width: min(100%, 42rem);
-  min-height: 20rem;
+  width: min(100%, 40rem);
+  min-height: 19rem;
   cursor: pointer;
   border: 1px solid color-mix(in oklab, var(--gold) 48%, transparent);
   background: color-mix(in oklab, var(--color-surface-cool) 92%, white);
   padding: clamp(1.5rem, 4vw, 2.5rem);
-  transform: translate3d(calc(var(--review-offset) * 3.5rem), calc(var(--review-offset) * 0.8rem), calc(var(--review-offset) * -90px)) rotateX(var(--review-rotate-x)) rotateY(var(--review-rotate-y)) rotateZ(calc(var(--review-offset) * -1deg));
+  transform: translate3d(calc(var(--review-offset) * 3.25rem), calc(var(--review-offset) * 0.7rem), calc(var(--review-offset) * -90px)) rotateX(var(--review-rotate-x)) rotateY(var(--review-rotate-y)) rotateZ(calc(var(--review-offset) * -1deg));
   transform-origin: center;
   transform-style: preserve-3d;
   opacity: max(0.15, calc(1 - var(--review-offset) * 0.18));
@@ -293,6 +307,20 @@
 .review-card[data-active="true"] {
   cursor: grab;
   box-shadow: 0 30px 70px -34px rgba(23, 35, 66, 0.85);
+}
+
+@media (max-width: 767px) {
+  .review-carousel {
+    min-height: 21rem;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .review-card {
+    width: 100%;
+    min-height: 21rem;
+    transform: translate3d(calc(var(--review-offset) * 1rem), calc(var(--review-offset) * 0.6rem), calc(var(--review-offset) * -55px)) rotateZ(calc(var(--review-offset) * -0.7deg));
+  }
 }
 
 .gallery-hero {
