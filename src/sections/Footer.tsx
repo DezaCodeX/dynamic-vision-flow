@@ -15,7 +15,7 @@ export function Footer({ onBook }: { onBook: () => void }) {
     <footer
       className="site-footer border-t border-[#B98A50]/30 bg-[#CFDCDF] text-[#293863]"
       style={{
-        backgroundColor: "#293863",
+        backgroundColor: "#CFDCDF",
       }}
     >
       {/* Main footer */}
