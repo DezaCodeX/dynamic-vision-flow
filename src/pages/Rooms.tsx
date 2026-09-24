@@ -306,22 +306,7 @@ export function Rooms() {
             </a>
           </div>
           <div className="grid gap-7 text-sm text-muted-foreground sm:grid-cols-2">
-            <div>
-              <p className="eyebrow text-ink">Hotel PNS Nakshatra</p>
-              <p className="mt-3 leading-relaxed">
-                Hotel PNS Nakshatra is a symbol of elegance and sophistication, a contemporary
-                3-star luxury hotel situated in the vibrant city of Vellore.
-              </p>
-              <p className="mt-4 leading-relaxed">
-                No. 171, Arcot Main Road,
-                <br />
-                Rangapuram,
-                <br />
-                Vellore - 632009,
-                <br />
-                Tamil Nadu, India.
-              </p>
-            </div>
+           
             <div className="space-y-3">
               <p className="eyebrow text-ink">Reservations</p>
               <a href="tel:04162266111" className="flex items-center gap-2 hover:text-gold">
