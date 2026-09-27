@@ -25,7 +25,8 @@ export function BookingPanel({
       <button
         aria-label="Close booking"
         onClick={onClose}
-        className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+        className="absolute inset-0 backdrop-blur-sm"
+        style={{ backgroundColor: "#4169E1", opacity: 0.72 }}
       />
       <div
         className={`glass-panel absolute left-1/2 top-1/2 w-[min(92vw,640px)] -translate-x-1/2 -translate-y-1/2 p-8 transition-transform duration-500 sm:p-12 ${
