@@ -267,7 +267,7 @@ export function Rooms() {
         <section className="dark-surface bg-ink px-6 py-28 lg:px-12 lg:py-40">
           <div className="mx-auto max-w-[1100px] text-center">
             <p className="eyebrow text-gold">Your stay, your space</p>
-            <h2 className="mt-5 font-display text-[clamp(3rem,8vw,8rem)] leading-[0.84] text-gold">
+            <h2 className="mt-5 font-display text-[clamp(3rem,8vw,8rem)] leading-[0.84] text-white">
               Choose how you <span className="italic text-gold">stay.</span>
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-cream/75">
@@ -288,73 +288,7 @@ export function Rooms() {
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-[1400px] gap-10 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:px-12 lg:py-32">
-          <div>
-            <p className="eyebrow text-gold">Get in touch</p>
-            <h2 className="mt-4 font-display text-6xl leading-none text-ink">
-              Meet us
-              <br />
-              <span className="italic text-gold">in Vellore.</span>
-            </h2>
-            <a
-              href="https://maps.app.goo.gl/MhVVYxgfvEiwWW6d8"
-              target="_blank"
-              rel="noreferrer"
-              className="text-link mt-8"
-            >
-              Get directions <ArrowUpRight className="ml-2 size-4" />
-            </a>
-          </div>
-          <div className="grid gap-7 text-sm text-muted-foreground sm:grid-cols-2">
-            <div>
-              <p className="eyebrow text-ink">Hotel PNS Nakshatra</p>
-              <p className="mt-3 leading-relaxed">
-                Hotel PNS Nakshatra is a symbol of elegance and sophistication, a contemporary
-                3-star luxury hotel situated in the vibrant city of Vellore.
-              </p>
-              <p className="mt-4 leading-relaxed">
-                No. 171, Arcot Main Road,
-                <br />
-                Rangapuram,
-                <br />
-                Vellore - 632009,
-                <br />
-                Tamil Nadu, India.
-              </p>
-            </div>
-            <div className="space-y-3">
-              <p className="eyebrow text-ink">Reservations</p>
-              <a href="tel:04162266111" className="flex items-center gap-2 hover:text-gold">
-                <Phone className="size-4 text-gold" />
-                0416 2266111 / 0416 2266222
-              </a>
-              <a href="tel:+917598498603" className="flex items-center gap-2 hover:text-gold">
-                <Phone className="size-4 text-gold" />
-                +91 75984 98603
-              </a>
-              <a href="mailto:fo@hotelpnsnakshatra.com" className="block hover:text-gold">
-                fo@hotelpnsnakshatra.com
-              </a>
-              <p className="pt-3 leading-relaxed">
-                CLINQ - Bar: +91 75984 98605
-                <br />
-                Vrindavan Veg Restaurant: +91 75984 98605
-                <br />
-                Cloud 9 - Rooftop Restaurant: +91 75984 98602
-              </p>
-              <a
-                href="https://maps.app.goo.gl/MhVVYxgfvEiwWW6d8"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 pt-2 hover:text-gold"
-              >
-                <MapPin className="size-4 text-gold" />
-                Get directions
-              </a>
-            </div>
-          </div>
-        </section>
-        <Footer onBook={() => openBooking()} />
+               <Footer onBook={() => openBooking()} />
       </main>
       <BookingPanel open={booking} details={bookingDetails} onClose={() => setBooking(false)} />
     </div>
