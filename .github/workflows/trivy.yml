@@ -52,15 +52,12 @@ jobs:
           # Secrets
           scanners: vuln,misconfig,secret
 
+          # Use repository Trivy configuration
+          trivy-config: trivy.yaml
+
           # Generate SARIF for GitHub Code Scanning
           format: sarif
           output: trivy-results.sarif
-
-          # Only report these severities
-         # severity: CRITICAL,HIGH,MEDIUM
-
-          # Make the severity filter apply to SARIF too
-          limit-severities-for-sarif: true
 
           # Include vulnerabilities even if no fix is available
           ignore-unfixed: true
@@ -76,7 +73,7 @@ jobs:
           category: trivy
 
       # ----------------------------------------------------------
-      # Keep SARIF as a downloadable GitHub Actions artifact
+      # Keep SARIF as downloadable GitHub Actions artifact
       # ----------------------------------------------------------
 
       - name: Upload Trivy report
@@ -112,11 +109,15 @@ jobs:
         with:
           scan-type: fs
           scan-ref: .
+
+          # Use same configuration so dev dependencies are included
+          trivy-config: trivy.yaml
+
           format: cyclonedx
           output: sbom.cdx.json
 
       # ----------------------------------------------------------
-      # Upload SBOM as GitHub Actions artifact
+      # Upload SBOM
       # ----------------------------------------------------------
 
       - name: Upload SBOM
