@@ -220,7 +220,7 @@ export function AboutUs() {
           <div className="about-hero-shade" />
           <div className="about-hero-copy">
             <p className="eyebrow text-gold">Premier luxury in Vellore</p>
-            <h1 className="mt-5 max-w-3xl font-display text-[clamp(4rem,11vw,10rem)] leading-[0.82] tracking-[-0.03em] text-cream">
+            <h1 className="mt-5 max-w-3xl font-display text-[clamp(4rem,11vw,10rem)] leading-[0.82] tracking-[-0.03em] text-white">
               About the <i className="text-gold">hotel.</i>
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-[var(--color-ivory)]">
@@ -462,78 +462,7 @@ export function AboutUs() {
             </div>
           </div>
         </section>
-        <section className="about-contact about-dark dark-surface" id="contact">
-          <div className="about-kicker">
-            <span>09</span>
-            <p className="eyebrow text-cream">Get in touch with us</p>
-          </div>
-          <div className="contact-grid">
-            <div>
-              <h2 className="about-title text-cream">
-                Your room
-                <br />
-                <i className="text-gold">awaits.</i>
-              </h2>
-              <p className="mt-6 max-w-md text-[var(--color-ivory)]">
-                Hotel PNS Nakshatra is a contemporary 3-star luxury hotel in the vibrant city of
-                Vellore, created as a haven of comfort and luxury for travelers.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <button
-                  onClick={openBooking}
-                  className="luxury-button luxury-button-hover px-6 py-3"
-                >
-                  Reserve now
-                </button>
-                <a
-                  href="https://maps.app.goo.gl/MhVVYxgfvEiwWW6d8"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="luxury-button-ghost px-6 py-3 text-cream"
-                >
-                  Get directions
-                </a>
-              </div>
-            </div>
-            <address className="contact-details not-italic">
-              <p>
-                No. 171, Arcot Main Road,
-                <br />
-                Rangapuram,
-                <br />
-                Vellore - 632009,
-                <br />
-                Tamil Nadu, India.
-              </p>
-              <a href="tel:+914162266111">0416 2266111 / 0416 2266222</a>
-              <a href="tel:+917598498603">Room Reservations: +91 75984 98603</a>
-              <a href="tel:+917598498605">CLINQ / Vrindavan: +91 75984 98605</a>
-              <a href="tel:+917598498602">Cloud 9: +91 75984 98602</a>
-              <a href="mailto:fo@hotelpnsnakshatra.com">fo@hotelpnsnakshatra.com</a>
-              <div className="contact-social">
-                <a
-                  href="https://www.facebook.com/pnsnakshatra"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={18} />
-                </a>
-                <a
-                  href="https://www.instagram.com/hotelpnsnakshatra"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={18} />
-                </a>
-                <a href="tel:+917598498603" aria-label="Call reservations">
-                  <Phone size={18} />
-                </a>
-              </div>
-            </address>
-          </div>
-        </section>
+       
       </main>
       <Footer onBook={openBooking} />
       <BookingPanel

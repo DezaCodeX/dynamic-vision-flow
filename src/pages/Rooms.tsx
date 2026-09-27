@@ -166,12 +166,12 @@ export function Rooms() {
           <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-12">
             <div className="relative z-10">
               <p className="eyebrow text-gold">Our accommodations</p>
-              <h1 className="mt-5 font-display text-[clamp(4rem,10vw,10rem)] leading-[0.8] text-cream">
+              <h1 className="mt-5 font-display text-[clamp(4rem,10vw,10rem)] leading-[0.8] text-white">
                 Stay
                 <br />
                 <span className="italic text-gold">with us.</span>
               </h1>
-              <p className="mt-8 max-w-md text-base leading-relaxed text-cream/80">
+              <p className="italic text-gold">
                 Spend your comfortable stay in the heart of beautiful Vellore.
               </p>
               <a
@@ -267,7 +267,7 @@ export function Rooms() {
         <section className="dark-surface bg-ink px-6 py-28 lg:px-12 lg:py-40">
           <div className="mx-auto max-w-[1100px] text-center">
             <p className="eyebrow text-gold">Your stay, your space</p>
-            <h2 className="mt-5 font-display text-[clamp(3rem,8vw,8rem)] leading-[0.84] text-cream">
+            <h2 className="mt-5 font-display text-[clamp(3rem,8vw,8rem)] leading-[0.84] text-gold">
               Choose how you <span className="italic text-gold">stay.</span>
             </h2>
             <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-cream/75">

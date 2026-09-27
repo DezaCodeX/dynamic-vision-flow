@@ -15,7 +15,12 @@ export function ContactPanel({ open, onClose }: { open: boolean; onClose: () => 
       }`}
       aria-hidden={!open}
     >
-      <button aria-label="Close contact details" onClick={onClose} className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      <button
+        aria-label="Close contact details"
+        onClick={onClose}
+        className="absolute inset-0 backdrop-blur-sm"
+        style={{ backgroundColor: "rgba(65, 105, 225, 0.35)" }}
+      />
       <div
         role="dialog"
         aria-modal="true"
