@@ -1,0 +1,126 @@
+name: Trivy Security Scan
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+  pull_request:
+
+  schedule:
+    - cron: "0 2 * * 1"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+
+  # ============================================================
+  # 1. SCA + VULNERABILITY + MISCONFIGURATION + SECRETS
+  # ============================================================
+
+  trivy-scan:
+    name: Trivy Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ----------------------------------------------------------
+      # Checkout
+      # ----------------------------------------------------------
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ----------------------------------------------------------
+      # Trivy
+      # ----------------------------------------------------------
+
+      - name: Run Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+
+          # SCA / Vulnerabilities
+          # Misconfigurations
+          # Secrets
+          scanners: vuln,misconfig,secret
+
+          # Generate SARIF for GitHub Code Scanning
+          format: sarif
+          output: trivy-results.sarif
+
+          # Only report these severities
+         # severity: CRITICAL,HIGH,MEDIUM
+
+          # Make the severity filter apply to SARIF too
+          limit-severities-for-sarif: true
+
+          # Include vulnerabilities even if no fix is available
+          ignore-unfixed: true
+
+      # ----------------------------------------------------------
+      # Upload SARIF to GitHub Security / Code Scanning
+      # ----------------------------------------------------------
+
+      - name: Upload Trivy SARIF
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: trivy-results.sarif
+          category: trivy
+
+      # ----------------------------------------------------------
+      # Keep SARIF as a downloadable GitHub Actions artifact
+      # ----------------------------------------------------------
+
+      - name: Upload Trivy report
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-security-report
+          path: trivy-results.sarif
+
+
+  # ============================================================
+  # 2. SBOM - CYCLONEDX
+  # ============================================================
+
+  trivy-sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # ----------------------------------------------------------
+      # Checkout
+      # ----------------------------------------------------------
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ----------------------------------------------------------
+      # Generate CycloneDX SBOM
+      # ----------------------------------------------------------
+
+      - name: Generate CycloneDX SBOM
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: cyclonedx
+          output: sbom.cdx.json
+
+      # ----------------------------------------------------------
+      # Upload SBOM as GitHub Actions artifact
+      # ----------------------------------------------------------
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-sbom
+          path: sbom.cdx.json
