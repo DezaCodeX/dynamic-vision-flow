@@ -1,5 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
+import { Chatbot } from "@/components/chatbot";
 import { Home } from "./home/Home";
 
 function NotFound() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Chatbot />
     </BrowserRouter>
   );
 }
