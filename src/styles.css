@@ -324,7 +324,7 @@
 }
 
 .gallery-hero {
-  background: linear-gradient(130deg, #172342 0%, #293863 58%, #172342 100%);
+  background: rgba(5, 24, 56, 0.8);
 }
 
 .gallery-spatial-stage {
