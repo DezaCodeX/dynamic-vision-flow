@@ -3,6 +3,7 @@ import gsap from "gsap";
 import heroHotel from "@/assets/hero-hotel.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
 import diningCloud9 from "@/assets/dining-cloud9.jpg";
+import heroTitleGraphic from "../../../../Untitled-1.webp";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
 import type { BookingDetails } from "@/home/components/Booking/BookingWidget";
 import { BookingWidget } from "@/home/components/Booking/BookingWidget";
@@ -64,14 +65,12 @@ export function Hero({
 
       <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
         <div className="grid grid-cols-1 items-end gap-[clamp(2.5rem,6vw,5rem)] lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative z-10 pb-4 lg:pb-16">
-            <p className="eyebrow mt-10 font-bold text-gold">A new constellation in Vellore</p>
-            <h1 className="mt-5 max-w-2xl font-display text-[clamp(2.9rem,8vw,8.4rem)] leading-[0.82] tracking-[-0.025em] text-cream">
-              <span className="block overflow-hidden"><span data-hero-line className="block text-[var(--color-ivory)]">Where Grandeur</span></span>
-              <span className="block overflow-visible pb-[0.12em]"><span data-hero-line className="block italic text-gold"> Meets Grace.</span></span>
-            </h1>
-            <p data-hero-fade className="eyebrow mt-8 text-gold">PNS Nakshatra · Vellore, Tamil Nadu</p>
-            <p data-hero-fade className="mt-5 max-w-md text-base leading-relaxed text-[var(--color-ivory)]">Thoughtful rooms, sky-high dining, and warm hospitality in the heart of the city.</p>
+          <div className="relative z-10 pb-4 text-left lg:pb-16">
+            <img
+              src={heroTitleGraphic}
+              alt="Where Grandeur meets Grace"
+              className="w-full max-w-[760px] object-contain drop-shadow-[0_14px_30px_rgba(5,14,35,0.24)]"
+            />
           </div>
 
           <div className="relative [perspective:1200px]">
