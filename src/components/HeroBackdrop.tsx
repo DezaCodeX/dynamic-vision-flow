@@ -62,9 +62,8 @@ export function HeroBackdrop() {
         ))}
       </div>
 
-      {/* cinematic grading + light sweep */}
-      <div className="pointer-events-none absolute inset-0 bg-background/72" />
-      <div className="pointer-events-none absolute inset-0 veil" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/35 to-ink/10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" />
       <div className="pointer-events-none absolute inset-0 animate-light-sweep" />
     </div>
   );

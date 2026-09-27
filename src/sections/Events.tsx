@@ -2,7 +2,7 @@ import { eventHalls, eventsImage } from "@/data/hotel";
 
 export function Events() {
   return (
-    <section id="celebrate" className="relative overflow-hidden py-28 lg:py-40">
+    <section id="celebrate" className="dark-surface relative overflow-hidden py-28 lg:py-40">
       <div className="absolute inset-0 -z-10">
         <img
           src={eventsImage}
@@ -10,10 +10,10 @@ export function Events() {
           loading="lazy"
           width={1400}
           height={900}
-          className="size-full object-cover opacity-30"
+          className="size-full object-cover opacity-55"
           data-parallax="-10"
         />
-        <div className="absolute inset-0 veil" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/20 to-transparent" />
       </div>
 
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
