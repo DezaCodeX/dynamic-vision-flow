@@ -83,7 +83,7 @@ export function Hero({
               </div>
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--hero-overlay)] via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                <p className="font-display text-2xl text-cream">Rooms with a point of view</p>
+                <p className="font-display text-2xl text-white">Rooms with a point of view</p>
                 <p className="eyebrow text-cream">0{cardIndex + 1} / 03</p>
               </div>
             </div>
