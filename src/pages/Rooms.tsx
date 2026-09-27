@@ -208,8 +208,8 @@ export function Rooms() {
         <section id="rooms" className="dark-surface bg-ink px-6 py-24 lg:px-12 lg:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="mb-10 max-w-xl">
-              <p className="eyebrow text-gold">The room collection</p>
-              <h2 className="mt-4 font-display text-5xl text-cream lg:text-7xl">
+              <p className="italic text-gold">The room collection</p>
+              <h2 className="mt-4 font-display text-5xl text-gold lg:text-7xl">
                 Find your <span className="italic text-gold">space.</span>
               </h2>
             </div>
