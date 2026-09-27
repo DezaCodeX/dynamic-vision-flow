@@ -1,5 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
+import { Chatbot } from "@/components/chatbot";
 import { Home } from "./home/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { Rooms } from "./pages/Rooms";
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/contact" element={<Home contactOpen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Chatbot />
     </BrowserRouter>
   );
 }
