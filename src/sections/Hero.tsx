@@ -12,17 +12,13 @@ const cardSlides = [
   { src: diningCloud9, alt: "Cloud 9 rooftop dining above Vellore" },
 ];
 
-
 export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) {
   const root = useRef<HTMLElement>(null);
   const image = useRef<HTMLDivElement>(null);
   const [cardIndex, setCardIndex] = useState(0);
 
   useEffect(() => {
-    const id = window.setInterval(
-      () => setCardIndex((i) => (i + 1) % cardSlides.length),
-      4200,
-    );
+    const id = window.setInterval(() => setCardIndex((i) => (i + 1) % cardSlides.length), 4200);
     return () => window.clearInterval(id);
   }, []);
 
@@ -54,12 +50,11 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-32"
+      className="dark-surface relative flex min-h-screen items-center overflow-hidden pb-20 pt-32"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />
       </div>
-
 
       <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
         <div>
@@ -114,7 +109,7 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
             <button
               onClick={onBook}
               data-cursor="Book"
-              className="border border-gold bg-gold px-10 py-4 text-[0.6rem] tracking-[0.4em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
+              className="luxury-button luxury-button-hover px-10 py-4"
             >
               Book your stay
             </button>

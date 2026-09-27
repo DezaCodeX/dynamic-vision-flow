@@ -4,6 +4,8 @@ import heroHotel from "@/assets/hero-hotel.jpg";
 import roomSuite from "@/assets/room-suite.jpg";
 import diningCloud9 from "@/assets/dining-cloud9.jpg";
 import { HeroBackdrop } from "@/components/HeroBackdrop";
+import type { BookingDetails } from "@/home/components/Booking/BookingWidget";
+import { BookingWidget } from "@/home/components/Booking/BookingWidget";
 
 /** 3 hotel scenes that cycle inside the hero card like the reference video. */
 const cardSlides = [
@@ -12,17 +14,18 @@ const cardSlides = [
   { src: diningCloud9, alt: "Cloud 9 rooftop dining above Vellore" },
 ];
 
-
-export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) {
+export function Hero({
+  ready = true,
+  onBook,
+}: {
+  ready?: boolean;
+  onBook: (details?: BookingDetails) => void;
+}) {
   const root = useRef<HTMLElement>(null);
   const image = useRef<HTMLDivElement>(null);
   const [cardIndex, setCardIndex] = useState(0);
-
   useEffect(() => {
-    const id = window.setInterval(
-      () => setCardIndex((i) => (i + 1) % cardSlides.length),
-      4200,
-    );
+    const id = window.setInterval(() => setCardIndex((i) => (i + 1) % cardSlides.length), 4200);
     return () => window.clearInterval(id);
   }, []);
 
@@ -31,7 +34,6 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.from("[data-hero-line]", { yPercent: 120, opacity: 0, duration: 1.2, stagger: 0.12 })
-        .from("[data-hero-preview]", { scale: 0.8, opacity: 0, duration: 0.9, stagger: 0.1 }, 0.3)
         .from("[data-hero-fade]", { y: 24, opacity: 0, duration: 0.9, stagger: 0.12 }, 0.7)
         .from("[data-hero-image]", { scale: 1.15, opacity: 0, duration: 1.6 }, 0.1);
     }, root);
@@ -54,106 +56,41 @@ export function Hero({ ready, onBook }: { ready: boolean; onBook: () => void }) 
     <section
       ref={root}
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-32"
+      className="dark-surface relative flex min-h-screen items-center overflow-hidden pb-[clamp(3rem,8vh,7rem)] pt-[clamp(7rem,14vh,10rem)]"
     >
       <div className="absolute inset-0 -z-10">
         <HeroBackdrop />
       </div>
 
-
-      <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
-        <div>
-          <div className="flex gap-3">
-            {cardSlides.map((slide, i) => (
-              <button
-                key={slide.src}
-                type="button"
-                onClick={() => setCardIndex(i)}
-                data-hero-preview
-                aria-label={`Show ${slide.alt}`}
-                className={`h-16 w-20 overflow-hidden rounded-sm border transition-all duration-500 sm:h-20 sm:w-28 ${
-                  i === cardIndex
-                    ? "border-gold opacity-100"
-                    : "border-border opacity-60 hover:opacity-90"
-                }`}
-              >
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  loading="lazy"
-                  width={1200}
-                  height={800}
-                  className="size-full object-cover"
-                />
-              </button>
-            ))}
+      <div className="mx-auto w-full max-w-[1440px] px-5 lg:px-10">
+        <div className="grid grid-cols-1 items-end gap-[clamp(2.5rem,6vw,5rem)] lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative z-10 pb-4 lg:pb-16">
+            <p className="eyebrow mt-10 font-bold text-gold">A new constellation in Vellore</p>
+            <h1 className="mt-5 max-w-2xl font-display text-[clamp(2.9rem,8vw,8.4rem)] leading-[0.82] tracking-[-0.025em] text-cream">
+              <span className="block overflow-hidden"><span data-hero-line className="block text-[var(--color-ivory)]">Stay above</span></span>
+              <span className="block overflow-visible pb-[0.12em]"><span data-hero-line className="block italic text-gold">the ordinary.</span></span>
+            </h1>
+            <p data-hero-fade className="eyebrow mt-8 text-gold">PNS Nakshatra · Vellore, Tamil Nadu</p>
+            <p data-hero-fade className="mt-5 max-w-md text-base leading-relaxed text-[var(--color-ivory)]">Thoughtful rooms, sky-high dining, and warm hospitality in the heart of the city.</p>
           </div>
 
-          <h1 className="mt-8 font-display text-[clamp(2.8rem,8vw,6.2rem)] leading-[0.95] text-cream">
-            <span className="block overflow-hidden">
-              <span data-hero-line className="block">
-                Where comfort
-              </span>
-            </span>
-            <span className="block overflow-hidden">
-              <span data-hero-line className="block italic text-gold">
-                meets elegance
-              </span>
-            </span>
-          </h1>
-
-          <p data-hero-fade className="eyebrow mt-6">
-            PNS Nakshatra · Vellore
-          </p>
-          <p data-hero-fade className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-            A contemporary hotel in the heart of Vellore — rooms designed for rest, a rooftop that
-            watches over the city, and celebration halls made for the days you remember.
-          </p>
-
-          <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-8">
-            <button
-              onClick={onBook}
-              data-cursor="Book"
-              className="border border-gold bg-gold px-10 py-4 text-[0.6rem] tracking-[0.4em] text-primary-foreground uppercase transition-colors hover:bg-transparent hover:text-gold"
-            >
-              Book your stay
-            </button>
-            <a href="#stay" className="eyebrow hover:text-gold">
-              Scroll ↓
-            </a>
-          </div>
-        </div>
-
-        <div className="[perspective:1200px]">
-          <div
-            ref={image}
-            data-hero-image
-            className="relative overflow-hidden rounded-[2rem] border border-border shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]"
-          >
-            <div className="relative h-[58vh] w-full lg:h-[78vh]">
-              {cardSlides.map((slide, i) => (
-                <img
-                  key={slide.src}
-                  src={slide.src}
-                  alt={slide.alt}
-                  width={912}
-                  height={1408}
-                  loading={i === 0 ? "eager" : "lazy"}
-                  className={`absolute inset-0 size-full object-cover transition-all duration-[1500ms] ease-out ${
-                    i === cardIndex
-                      ? "opacity-100 scale-100 [clip-path:inset(0_0_0_0)]"
-                      : "opacity-0 scale-110 [clip-path:inset(0_0_0_100%)]"
-                  }`}
-                />
-              ))}
-            </div>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-              <p className="font-display text-2xl text-cream">Est. Vellore</p>
-              <p className="eyebrow">3★ Comfort</p>
+          <div className="relative [perspective:1200px]">
+            <div ref={image} data-hero-image className="relative overflow-hidden rounded-[1.5rem] border border-cream/20 shadow-[var(--shadow-cinema)] [transform-style:preserve-3d]">
+              <div className="relative h-[clamp(24rem,64vh,48rem)] w-full">
+                {cardSlides.map((slide, i) => (
+                  <img key={slide.src} src={slide.src} alt={slide.alt} width={912} height={1408} loading={i === 0 ? "eager" : "lazy"} className={`absolute inset-0 size-full object-cover transition-all duration-[1500ms] ease-out ${i === cardIndex ? "opacity-100 scale-100 [clip-path:inset(0_0_0_0)]" : "opacity-0 scale-110 [clip-path:inset(0_0_0_100%)]"}`} />
+                ))}
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--hero-overlay)] via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <p className="font-display text-2xl text-cream">Rooms with a point of view</p>
+                <p className="eyebrow text-cream">0{cardIndex + 1} / 03</p>
+              </div>
             </div>
           </div>
         </div>
+
+        <div data-hero-fade className="mt-8"><BookingWidget onBook={onBook} /></div>
       </div>
     </section>
   );

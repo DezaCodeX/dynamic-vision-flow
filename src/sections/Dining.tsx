@@ -37,7 +37,7 @@ export function Dining() {
                 className="h-[44vh] w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-105 lg:h-[64vh]"
                 data-parallax="-6"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/75 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
             </div>
 
             <div className="lg:px-10" data-reveal data-reveal-delay="0.1">
