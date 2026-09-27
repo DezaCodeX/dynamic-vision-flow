@@ -49,7 +49,15 @@ export function Gallery() {
               <p className="eyebrow text-gold">Gallery / PNS Nakshatra</p>
               <h1 className="mt-5 max-w-4xl font-display text-[clamp(4rem,10vw,10rem)] leading-[0.78] text-[var(--color-ivory)]">A place with a <span className="italic text-gold">point of view.</span></h1>
             </div>
-            <p className="max-w-md text-base leading-relaxed text-[var(--color-ivory)]/85">A visual study of rooms, dining, gathering and the evening character of Hotel PNS Nakshatra.</p>
+            <div className="max-w-[80%]">
+              <img
+                src={galleryImages[0]?.src}
+                alt={galleryImages[0]?.alt || "Hotel PNS Nakshatra gallery preview"}
+                className="mb-4 h-100 w-full rounded-md object-cover opacity-90"
+                loading="lazy"
+              />
+              <p className="text-base leading-relaxed text-[var(--color-ivory)]/85">A visual study of rooms, dining, gathering and the evening character of Hotel PNS Nakshatra.</p>
+            </div>
           </div>
         </section>
 
