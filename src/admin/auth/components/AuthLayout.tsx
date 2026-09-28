@@ -7,11 +7,12 @@ type AuthLayoutProps = {
   title?: string;
   subtitle?: string;
   footer?: ReactNode;
+  useTimesFont?: boolean;
 };
 
-export function AuthLayout({ children, title, subtitle, footer }: AuthLayoutProps) {
+export function AuthLayout({ children, title, subtitle, footer, useTimesFont = false }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen bg-[#edf3f7] px-4 py-8 sm:px-6 lg:px-8">
+    <div className={`${useTimesFont ? "admin-times-font " : ""}min-h-screen bg-[#edf3f7] px-4 py-8 sm:px-6 lg:px-8`}>
       <div className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-xl items-center justify-center">
         <div className="w-full">
           <div className="mb-6 text-center">

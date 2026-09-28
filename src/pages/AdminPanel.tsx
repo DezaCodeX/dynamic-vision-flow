@@ -15,6 +15,20 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 const navSections = [
   ["Dashboard", Home],
@@ -35,6 +49,29 @@ const stats = [
   { label: "Guest Reviews", value: "94", delta: "+11 new" },
   { label: "Website Views", value: "24.8K", delta: "+22.1%" },
 ] as const;
+
+const revenueTrend = [
+  { month: "Jan", revenue: 5.2 },
+  { month: "Feb", revenue: 5.8 },
+  { month: "Mar", revenue: 6.1 },
+  { month: "Apr", revenue: 5.7 },
+  { month: "May", revenue: 7.3 },
+  { month: "Jun", revenue: 8.4 },
+];
+
+const roomBookings = [
+  { room: "Deluxe", bookings: 184 },
+  { room: "Premier", bookings: 142 },
+  { room: "Suite", bookings: 96 },
+  { room: "Family", bookings: 78 },
+];
+
+const bookingChannels = [
+  { channel: "Direct", bookings: 42, color: "#051838" },
+  { channel: "Travel sites", bookings: 31, color: "#cf8c55" },
+  { channel: "Phone", bookings: 17, color: "#69849b" },
+  { channel: "Walk-in", bookings: 10, color: "#b9cbd5" },
+];
 
 const recentActivity = [
   ["New booking", "Mr. Sharma reserved a Deluxe Room for 3 nights", "2h ago"],
@@ -87,7 +124,7 @@ function FileTextIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export function AdminPanel() {
   return (
-    <div className="min-h-screen bg-[var(--color-surface-cool)] text-[var(--color-text-primary)]">
+    <div className="admin-times-font min-h-screen bg-[var(--color-surface-cool)] text-[var(--color-text-primary)]">
       <div className="flex min-h-screen">
         <aside className="w-[290px] shrink-0 bg-[#051838] text-[var(--color-ivory)]">
           <div className="flex items-center gap-3 border-b border-white/10 px-6 py-6">
@@ -144,6 +181,86 @@ export function AdminPanel() {
                 </div>
               </article>
             ))}
+          </section>
+
+          <section aria-label="Hotel performance charts" className="mt-8 grid gap-6 xl:grid-cols-2">
+            <article className="rounded-2xl border border-[var(--color-border-warm)] bg-white/50 p-5">
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div>
+                  <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">Revenue trend</h2>
+                  <p className="mt-1 text-sm text-[var(--color-text-primary)]/65">Monthly revenue · ₹ lakh</p>
+                </div>
+                <span className="rounded-full bg-[#051838]/5 px-3 py-1 text-xs font-medium text-[#051838]">Jan – Jun</span>
+              </div>
+              <div className="h-[260px] w-full" role="img" aria-label="Area chart showing monthly revenue from January to June">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={revenueTrend} margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="revenueFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#cf8c55" stopOpacity={0.3} />
+                        <stop offset="95%" stopColor="#cf8c55" stopOpacity={0.02} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid stroke="#05183818" vertical={false} />
+                    <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: "#46536b", fontSize: 12 }} />
+                    <YAxis axisLine={false} tickLine={false} tick={{ fill: "#46536b", fontSize: 12 }} tickFormatter={(value: number) => `₹${value}L`} />
+                    <Tooltip formatter={(value) => [`₹${value}L`, "Revenue"]} contentStyle={{ borderRadius: 10, borderColor: "#dfe7ef" }} />
+                    <Area type="monotone" dataKey="revenue" stroke="#cf8c55" strokeWidth={3} fill="url(#revenueFill)" activeDot={{ r: 5, fill: "#051838" }} />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            </article>
+
+            <article className="rounded-2xl border border-[var(--color-border-warm)] bg-white/50 p-5">
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div>
+                  <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">Bookings by room type</h2>
+                  <p className="mt-1 text-sm text-[var(--color-text-primary)]/65">Reservations in the current period</p>
+                </div>
+                <BedDouble className="mt-1 h-5 w-5 text-[var(--color-gold)]" />
+              </div>
+              <div className="h-[260px] w-full" role="img" aria-label="Bar chart comparing bookings across room types">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={roomBookings} margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
+                    <CartesianGrid stroke="#05183818" vertical={false} />
+                    <XAxis dataKey="room" axisLine={false} tickLine={false} tick={{ fill: "#46536b", fontSize: 12 }} />
+                    <YAxis axisLine={false} tickLine={false} tick={{ fill: "#46536b", fontSize: 12 }} />
+                    <Tooltip cursor={{ fill: "#05183808" }} contentStyle={{ borderRadius: 10, borderColor: "#dfe7ef" }} />
+                    <Bar dataKey="bookings" name="Bookings" fill="#051838" radius={[5, 5, 0, 0]} maxBarSize={44} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </article>
+
+            <article className="rounded-2xl border border-[var(--color-border-warm)] bg-white/50 p-5 xl:col-span-2">
+              <div className="mb-5">
+                <h2 className="text-xl font-semibold text-[var(--color-text-primary)]">Booking channels</h2>
+                <p className="mt-1 text-sm text-[var(--color-text-primary)]/65">Share of reservations by source</p>
+              </div>
+              <div className="grid items-center gap-5 sm:grid-cols-[minmax(220px,0.8fr)_1fr]">
+                <div className="h-[230px] w-full" role="img" aria-label="Donut chart showing reservation share by booking channel">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie data={bookingChannels} dataKey="bookings" nameKey="channel" innerRadius={62} outerRadius={92} paddingAngle={3} stroke="none">
+                        {bookingChannels.map((entry) => <Cell key={entry.channel} fill={entry.color} />)}
+                      </Pie>
+                      <Tooltip formatter={(value, name) => [`${value}%`, name]} contentStyle={{ borderRadius: 10, borderColor: "#dfe7ef" }} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {bookingChannels.map((channel) => (
+                    <div key={channel.channel} className="flex items-center justify-between rounded-xl border border-[var(--color-border-warm)] bg-white/60 px-4 py-3">
+                      <span className="flex items-center gap-2 text-sm text-[var(--color-text-primary)]">
+                        <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: channel.color }} />
+                        {channel.channel}
+                      </span>
+                      <strong className="text-sm text-[var(--color-text-primary)]">{channel.bookings}%</strong>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
           </section>
 
           <section className="mt-8 grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">

@@ -73,6 +73,7 @@ export function AdminLogin() {
 
   return (
     <AuthLayout
+      useTimesFont
       title="Admin Portal"
       subtitle="Secure access to the Hotel PNS Nakshatra administration panel."
       footer={
