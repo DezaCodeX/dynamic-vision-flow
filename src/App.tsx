@@ -1,7 +1,10 @@
 import { useEffect } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 
 import { Chatbot } from "@/components/chatbot";
+import { AdminLogin } from "./admin/auth/pages/AdminLogin";
+import { CreateAdminAccount } from "./admin/auth/pages/CreateAdminAccount";
+import { ForgotPassword } from "./admin/auth/pages/ForgotPassword";
 import { Home } from "./home/Home";
 import { AboutUs } from "./pages/AboutUs";
 import { AdminPanel } from "./pages/AdminPanel";
@@ -68,21 +71,35 @@ export default function App() {
     <>
       <ParagraphTypographyBoost />
       <BrowserRouter>
-        <Routes>
+        <AppShell />
+      </BrowserRouter>
+    </>
+  );
+}
+
+function AppShell() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
+  return (
+    <>
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/dining" element={<Dining />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/create-account" element={<CreateAdminAccount />} />
+        <Route path="/admin/forgot-password" element={<ForgotPassword />} />
         <Route path="/privacy-policy" element={<Legal path="/privacy-policy" />} />
         <Route path="/terms-and-conditions" element={<Legal path="/terms-and-conditions" />} />
         <Route path="/refund-cancellation-policy" element={<Legal path="/refund-cancellation-policy" />} />
         <Route path="/contact" element={<Home contactOpen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-        <Chatbot />
-      </BrowserRouter>
+      {!isAdminRoute && <Chatbot />}
     </>
   );
 }
