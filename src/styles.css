@@ -187,7 +187,7 @@
   isolation: isolate;
   background:
     radial-gradient(circle at 78% 28%, color-mix(in oklab, var(--gold) 22%, transparent), transparent 28%),
-    linear-gradient(130deg, #172342 0%, #293863 58%, #172342 100%);
+    linear-gradient(130deg, #051838 0%, #051838 58%, #051838 100%);
 }
 
 .dining-hero-grid {
@@ -276,7 +276,7 @@
 }
 
 .dining-experience-lounge {
-  background: linear-gradient(130deg, #172342, #293863);
+  background: linear-gradient(130deg, #051838, #051838);
 }
 
 .dining-experience-light .luxury-button-ghost:hover {
@@ -803,14 +803,14 @@
 
 .about-hero-scene {
   z-index: -2;
-  background: linear-gradient(120deg, #172342, #293863 55%, #46536b);
+  background: linear-gradient(120deg, #051838, #051838 55%, #46536b);
 }
 
 .about-hero-shade {
   z-index: -1;
   background:
-    linear-gradient(90deg, #172342e8 0%, #1723429c 45%, #17234226 100%),
-    linear-gradient(0deg, #172342c9 0%, transparent 48%);
+    linear-gradient(90deg, #051838e8 0%, #0518389c 45%, #05183826 100%),
+    linear-gradient(0deg, #051838c9 0%, transparent 48%);
 }
 
 .about-hero-copy {
@@ -905,7 +905,7 @@
   bottom: 0;
   left: 0;
   padding: clamp(1.5rem, 5vw, 3rem);
-  background: linear-gradient(0deg, #172342d9, transparent);
+  background: linear-gradient(0deg, #051838d9, transparent);
 }
 .about-image-strip .eyebrow {
   color: var(--color-ivory);

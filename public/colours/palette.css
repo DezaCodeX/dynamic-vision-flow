@@ -1,6 +1,6 @@
 :root {
-  --color-navy: #293863;
-  --color-navy-soft: #354873;
+  --color-navy: #051838;
+  --color-navy-soft: #0d2347;
   /* Muted blue-grey surfaces keep the page calm without losing the cool palette. */
   --color-surface-cool: #d1dde1;
   --color-surface-blue: #b9cbd5;
@@ -8,9 +8,9 @@
   --color-ivory: #f3f8fa;
   --color-cream: #f6e2b4;
   --color-gold: #cf8c55;
-  --color-text-primary: #293863;
+  --color-text-primary: #051838;
   --color-text-secondary: #46536b;
-  --color-border-warm: #2938632e;
+  --color-border-warm: #0518382e;
   --ink: var(--color-text-primary);
   --background: var(--color-surface-cool);
   --foreground: var(--color-text-primary);
@@ -34,13 +34,13 @@
   --border: var(--color-border-warm);
   --input: #46536b66;
   --ring: var(--color-gold);
-  --hero-overlay: #172342d9;
+  --hero-overlay: #051838d9;
   --gradient-veil: linear-gradient(
     180deg,
     color-mix(in oklab, var(--color-navy) 62%, transparent) 0%,
     color-mix(in oklab, var(--color-navy) 28%, transparent) 48%,
     color-mix(in oklab, var(--color-navy) 72%, transparent) 100%
   );
-  --shadow-cinema: 0 32px 80px -36px #17234299;
+  --shadow-cinema: 0 32px 80px -36px #05183899;
   --shadow-gold: 0 0 60px -12px color-mix(in oklab, var(--gold) 24%, transparent);
 }
