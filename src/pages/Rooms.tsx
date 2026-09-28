@@ -162,7 +162,7 @@ export function Rooms() {
       <Navbar onBook={() => openBooking()} />
       <main>
         <section className="dark-surface relative isolate min-h-screen overflow-hidden pb-10 pt-36 lg:pt-44">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_35%,rgba(207,140,85,0.18),transparent_34%),linear-gradient(120deg,#172342_0%,#293863_58%,#172342_100%)]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_35%,rgba(207,140,85,0.18),transparent_34%),linear-gradient(120deg,#051838_0%,#051838_58%,#051838_100%)]" />
           <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-12">
             <div className="relative z-10">
               <p className="eyebrow text-gold">Our accommodations</p>

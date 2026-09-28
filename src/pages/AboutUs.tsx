@@ -341,10 +341,11 @@ export function AboutUs() {
         <section className="about-section about-dark dark-surface" id="facilities">
           <div className="about-kicker">
             <span>04</span>
-            <p className="eyebrow text-cream">Hotel facilities</p>
+            <p className="eyebrow text-gold">Hotel facilities</p>
           </div>
-          <h2 className="about-title text-cream">
-            Spaces with a<br />
+          <h2 className="about-title text-gold">
+            <span style={{ color: "#FFFFFF" }}>Spaces with a</span>
+            <br />
             <i className="text-gold">sense of occasion.</i>
           </h2>
           <div className="facility-grid">
@@ -383,10 +384,10 @@ export function AboutUs() {
         <section className="about-section about-services about-dark dark-surface">
           <div className="about-kicker">
             <span>06</span>
-            <p className="eyebrow text-cream">Discover our services & facilities</p>
+            <p className="eyebrow text-gold">Discover our services & facilities</p>
           </div>
           <h2 className="about-title text-cream">
-            Care that arrives
+            <span style={{ color: "#FFFFFF" }}>Care that arrives</span>
             <br />
             <i className="text-gold">before you ask.</i>
           </h2>
