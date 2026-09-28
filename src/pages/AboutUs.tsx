@@ -341,11 +341,11 @@ export function AboutUs() {
         <section className="about-section about-dark dark-surface" id="facilities">
           <div className="about-kicker">
             <span>04</span>
-            <p className="eyebrow text-cream">Hotel facilities</p>
+            <p className="eyebrow text-gold">Hotel facilities</p>
           </div>
-          <h2 className="about-title text-cream">
+          <h2 className="about-title text-white">
             Spaces with a<br />
-            <i className="text-gold">sense of occasion.</i>
+            <i className="text-white">sense of occasion.</i>
           </h2>
           <div className="facility-grid">
             {facilities.map(([name, detail, image]) => (
