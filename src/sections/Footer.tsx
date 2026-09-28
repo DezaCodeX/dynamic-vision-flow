@@ -12,7 +12,7 @@ const navigation = [
 
 export function Footer({ onBook }: { onBook: () => void }) {
   return (
-    <footer className="site-footer dark-surface border-t border-gold/30 bg-ink text-[var(--color-ivory)]">
+    <footer className="site-footer dark-surface border-t border-gold/30 bg-[#051838] text-[var(--color-ivory)]">
       <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-6 py-3 lg:flex-row lg:items-start lg:justify-between lg:gap-5 lg:px-12 lg:py-4">
         <div className="flex min-w-0 flex-col justify-between lg:w-[24%]">
           <a href="/" className="inline-block" aria-label="Hotel PNS Nakshatra home">
