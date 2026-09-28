@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 import { Chatbot } from "@/components/chatbot";
@@ -7,6 +8,42 @@ import { Rooms } from "./pages/Rooms";
 import { Dining } from "./pages/Dining";
 import { Gallery } from "./pages/Gallery";
 import { Legal } from "./pages/Legal";
+
+function ParagraphTypographyBoost() {
+  useEffect(() => {
+    const boostParagraphs = () => {
+      document.querySelectorAll("p").forEach((paragraph) => {
+        const currentSize = parseFloat(window.getComputedStyle(paragraph).fontSize);
+        if (!Number.isFinite(currentSize) || currentSize <= 0) return;
+
+        if (!paragraph.dataset.baseParagraphFontSize) {
+          paragraph.dataset.baseParagraphFontSize = currentSize.toString();
+        }
+
+        const baseSize = Number(paragraph.dataset.baseParagraphFontSize);
+        const targetSize = baseSize + 2;
+        const displayedSize = parseFloat(window.getComputedStyle(paragraph).fontSize);
+
+        if (Math.abs(displayedSize - targetSize) > 0.1) {
+          paragraph.style.fontSize = `${targetSize}px`;
+        }
+      });
+    };
+
+    boostParagraphs();
+
+    const observer = new MutationObserver(() => boostParagraphs());
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    window.addEventListener("resize", boostParagraphs);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", boostParagraphs);
+    };
+  }, []);
+
+  return null;
+}
 
 function NotFound() {
   return (
@@ -27,8 +64,10 @@ function NotFound() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <>
+      <ParagraphTypographyBoost />
+      <BrowserRouter>
+        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/rooms" element={<Rooms />} />
@@ -40,7 +79,8 @@ export default function App() {
         <Route path="/contact" element={<Home contactOpen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Chatbot />
-    </BrowserRouter>
+        <Chatbot />
+      </BrowserRouter>
+    </>
   );
 }
