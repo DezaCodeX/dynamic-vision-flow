@@ -45,7 +45,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
               <div className="group relative">
                 <a
                   href={l.href}
-                  className={`eyebrow text-[calc(var(--type-label)_+_2px)] transition-colors hover:text-gold lg:text-[calc(0.78rem_+_2px)] ${location.pathname === l.href ? "text-[#000000] hover:text-[#000000]" : ""}`}
+                  className={`eyebrow text-[calc(var(--type-label)_+_2px)] transition-colors underline-offset-4 decoration-[1px] hover:text-[#000000] hover:underline lg:text-[calc(0.78rem_+_2px)] ${location.pathname === l.href ? "text-[#000000] underline" : ""}`}
                   data-cursor="View"
                 >
                   {l.label}
@@ -56,10 +56,10 @@ export function Navbar({ onBook }: { onBook: () => void }) {
                       <a
                         key={section}
                         href={`/dining#${section}`}
-                        className="block px-3 py-2 text-[calc(0.75rem_+_2px)] font-semibold uppercase tracking-[0.12em] text-[var(--color-ivory)] transition-colors hover:bg-[color-mix(in_oklab,var(--color-ivory)_10%,transparent)] hover:text-gold"
+                        className="group/dropdown-item block px-3 py-2 text-[calc(0.75rem_+_2px)] font-semibold uppercase tracking-[0.12em] text-[var(--color-ivory)] transition-colors underline-offset-2 decoration-[1px] hover:bg-[color-mix(in_oklab,var(--color-ivory)_10%,transparent)] hover:text-[#000000] hover:underline"
                       >
                         <span className="block">{section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}</span>
-                        <span className="mt-1 block text-[calc(0.6rem_+_2px)] font-normal tracking-[0.08em] text-[var(--color-ivory)]/70">
+                        <span className="mt-1 block text-[calc(0.6rem_+_2px)] font-normal tracking-[0.08em] text-[var(--color-ivory)]/70 group-hover/dropdown-item:text-[#000000]">
                           {section === "vrindavan" ? "Veg fine dining" : section === "cloud-9" ? "Rooftop restaurant" : "Casual bar & lounge"}
                         </span>
                       </a>
@@ -97,7 +97,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             <a
               key={l.href}
               href={l.href}
-              className={`eyebrow text-[calc(var(--type-label)_+_2px)] ${location.pathname === l.href ? "text-[#000000]" : ""}`}
+              className={`eyebrow text-[calc(var(--type-label)_+_2px)] transition-colors underline-offset-4 decoration-[1px] hover:text-[#000000] hover:underline ${location.pathname === l.href ? "text-[#000000] underline" : ""}`}
               onClick={() => setOpen(false)}
             >
               {l.label}
@@ -107,7 +107,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             <p className="eyebrow text-gold">Dining</p>
             <div className="mt-2 grid grid-cols-3 gap-2">
               {["vrindavan", "cloud-9", "clinq"].map((section) => (
-                <a key={section} href={`/dining#${section}`} onClick={() => setOpen(false)} className="eyebrow text-[calc(var(--type-label)_+_2px)] text-[var(--color-ivory)]/80 hover:text-gold">
+                <a key={section} href={`/dining#${section}`} onClick={() => setOpen(false)} className="eyebrow text-[calc(var(--type-label)_+_2px)] text-[var(--color-ivory)]/80 transition-colors underline-offset-2 decoration-[1px] hover:text-[#000000] hover:underline">
                   {section === "cloud-9" ? "Cloud 9" : section[0].toUpperCase() + section.slice(1)}
                 </a>
               ))}
